@@ -5,6 +5,7 @@ cache:
   - node_modules
 script:
   - npm test
+  
 env:
   - CI=true
 deploy:
