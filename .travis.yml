@@ -3,6 +3,10 @@ node_js: node
 cache:
   directories:
   - node_modules
+script:
+  - npm test
+env:
+  - CI=true
 deploy:
   provider: script
   script: netlify deploy -s $NETLIFY_SITE_ID -t $NETLIFY_ACCESS_TOKEN -p --dir ./build
