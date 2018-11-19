@@ -1,5 +1,12 @@
- language: node_js
- node_js: node
- cache:
-   directories:
-     - node_modules
+language: node_js
+node_js: node
+cache:
+  directories:
+  - node_modules
+deploy:
+  provider: heroku
+  api_key:
+    secure: mxwqKEK+vQHu/pHOUBbLR2dF+oHM8MJWVhcqmjMvb8P5FjQgTzMmagUbdpXdpGNtWHX+kDjvHimBBQfeTU6+AR2I9YgjZMuz8CfDzVlRloIuu+ugvRoRKcOqZVPFmRT24exPays2G9U5lfMpNvXSXfsuWNnDFr8tuyXCgj7un+ojCvwahW1t+rY7piTTaiwVFBtA8h1WNQV8/xZY1A3ZlWl40fSPHW2Y9Is/WZWwBjCcFEnWrkfVyIPkx9BKo5C7gYjRHY0L/BveOw2FFsPjzzax8JginUnbgE7PZS9jAyGEjaXgJFpLjGcXaiKRDoNR9PkjGZotk6WeuVIGDTTtPP5i8IsFA3hXdOEl7blmlDxei/0VxH7tvzKNW3NVXmkaMs7wLIjnDpZ73PUQkKlJ8nL3rdgFsbAMEwdGYes1/N239dmLroV66AboONDvwz4L+2WyCxc+rRDzmfc4922SXx3RP8+DTp2aF+bINK4Oe+5OD/woQHIhURAy3KJqcHXBD8qz2T+ireIfdg3f0mchZN8K7do2MpJxVFEj3tbyebO/pUVaJ4mSJ/PRCkq8JxQrEMBFEuhoKAkh1bFvs9I4C3jIy2GMv0o8QAdGOPIZOAPqBmWZ7jUiZJskTIMDl1vy5ax8P3pGVqTh11FCzl6M+gZac+UzI9BgbD48qGgtiDU=
+  app: treasurely-client
+  on:
+    repo: maripal/treasurely-client
