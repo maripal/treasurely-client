@@ -4,10 +4,11 @@ cache:
   directories:
   - node_modules
 env:
-  - CI=true
+- CI=true
 deploy:
-  provider: script
-  script: netlify deploy -s $NETLIFY_SITE_ID -t $NETLIFY_ACCESS_TOKEN -p --dir ./build
-  skip_cleanup: true
+  provider: heroku
+  api_key:
+    secure: ZNxFD3pTgYG5yH7WL8rn49mCqdA5HSiW+idpskFTyypN4PA2T2/WR6scC8p7Y0TkbyUT9hiLXuh1bXPM49+TfFKd+Txl5wtwRKIlFCF8anmgRxlmOwG7LsKG+KGzFoqh2vLEfD34HkMx+6CvTsCCxW1oGrOPrFkiAw1u9I2ZBjbWMDzACigBs3IFmYr99yihxaoF9KgHRl+QjbachPkd6YVsHAtDHe6Z8CLIWx37J1QavNk4s9QViixnI/r9SuNflBELWGZ8KydHjPicWPGjTikl3pbYbX6S15JgVSAUA+FwCgTKiqsIqndB9RmIWy7c2A/KfQ9kD19rznG0rf7lPbm5BExIQJ/10s1i2CwxTRQN95AsufzMgBmtQQ6Bb8lClVmVtwvGzu7kKGGw4Bx9n5Xiy1FA0A2wuPdTdyktC316SKTl3H3mArkoL41PTZpi480OJOF7yYH58tEuK3hTeFsektYns4uqhiUWvoVHRUfgNPOkPdF+cm6GFpficAWWVxaB7bhaLFD/apwnkKKvP4PYyJTwc3rLKhjSfeYFe2CSkmcXRLCjpzfgWcXTzJbS7P+Jpt5QixiewSwoQifuWXfc5l8ISwm4aXCFVwHm0SiDwfsrob7Qi1jYMjzY09laC0DaKjkBzT2d1QHHi7Ozaqi/5gn5xyt18+qM2xwx36E=
+  app: treasurely-client
   on:
-    branch: master
+    repo: maripal/treasurely-client
