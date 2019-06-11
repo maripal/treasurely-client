@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ItemList = () => {
+const ListItems = () => {
   return (
     <div>
       ItemList
@@ -8,4 +8,4 @@ const ItemList = () => {
   );
 };
 
-export default ItemList;
+export default ListItems;
