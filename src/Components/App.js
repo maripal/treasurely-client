@@ -5,7 +5,7 @@ import LandingPage from './LandingPage';
 import Login from './Login';
 import SignUp from './SignUp';
 import HomePage from './HomePage';
-import AddItem from './AddItem';
+import './App.css';
 
 class App extends React.Component {
   render() {
@@ -17,7 +17,6 @@ class App extends React.Component {
           <Route path="/login" exact component={Login} />
           <Route path="/signup" exact component={SignUp} />
           <Route path="/home" exact component={HomePage} />
-          <Route path="/additem" exact component={AddItem} />
         </Router>
       </div>
     )

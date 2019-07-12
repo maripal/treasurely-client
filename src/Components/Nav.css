@@ -1,0 +1,8 @@
+.nav, a {
+  background-color: #1c7c54;
+  text-decoration: none;
+  color: white;
+  padding: 15px 10px;
+  font-family: sans-serif;
+  letter-spacing: 2px;
+}

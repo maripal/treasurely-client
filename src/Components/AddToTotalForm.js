@@ -12,7 +12,6 @@ class AddToTotalForm extends React.Component {
 
   onChange = event => {
     this.setState ({ amountInput: event.target.value })
-    console.log(this.state.amountInput)
   }
 
   addMoneySubmit = event => {

@@ -1,0 +1,11 @@
+.item div {
+  display: flex;
+  justify-content: space-between;
+  background-color: aquamarine;
+}
+
+.purchased div {
+  display: flex;
+  justify-content: space-between;
+  background-color: lightcoral;
+}
