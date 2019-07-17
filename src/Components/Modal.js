@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 const Modal = props => {
+  console.log(props);
   const modalStyle =  {
     backgroundColor: 'rgba(0,0,0,0.5)',
     position: 'fixed',
@@ -14,16 +15,31 @@ const Modal = props => {
     justifyContent: 'center'
   };
 
-  //Fix the styling here so the title is placed correctly above item name & price when modal opens.
+  const innerElementStyle = {
+    backgroundColor: 'white',
+    width: '500px',
+    height: '50vh',
+    padding: '15px',
+  }
+
+  const formTitleStyle = {
+    textAlign: 'center',
+    marginBottom: '25px'
+  };
+
+  //FIX FORM STYLING!
 
   //props is coming from our 'addItemForm' component.
   return ReactDOM.createPortal(
     <div style={modalStyle}>
-      <div>
-        {props.title}
-      </div>
-      <div>
-        {props.content}
+      <div style={innerElementStyle}>
+        <div style={formTitleStyle}>
+          {props.title}
+        </div>
+        <div>
+          {props.content}
+        </div>
+        <button onClick={props.hideModal}>Hide</button>
       </div>
     </div>,
     document.getElementById('modal')

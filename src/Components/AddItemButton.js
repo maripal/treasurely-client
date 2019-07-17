@@ -15,9 +15,13 @@ class AddItemButton extends React.Component {
     this.setState({ showModal: true })
   }
 
+  handleHideClick = () => {
+    this.setState({ showModal: false })
+  };
+
   render() {
     const renderModal = this.state.showModal ? (
-      <AddItemContainer />
+      <AddItemContainer hideModal={this.handleHideClick} />
     ) : '';
 
     return (

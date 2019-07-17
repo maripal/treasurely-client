@@ -1,5 +1,6 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
+import './AddItemForm.css';
 
 /* class AddItemForm extends React.Component {
 
@@ -51,7 +52,7 @@ const renderError = ({ error, touched }) => {
 
 const renderField = ({ input, label, type, meta }) => {
   return (
-    <div>
+    <div className="input-container">
       <label>{label}</label>
       <input {...input} type={type} placeholder={label} />
       {renderError(meta)}
@@ -64,7 +65,7 @@ const AddItemForm = props => {
   const { handleSubmit } = props;
   return (
     <form onSubmit={handleSubmit}>
-      <div>
+      <div className="form-container">
         <Field
           name="itemName"
           component={renderField}
@@ -78,7 +79,7 @@ const AddItemForm = props => {
           label="Price"
           parse={val => Number(val)}
         />
-        <button type="submit">Submit</button>
+        <button className="item-button" type="submit">Submit</button>
       </div>
     </form>
   );
