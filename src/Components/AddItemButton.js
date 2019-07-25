@@ -1,26 +1,30 @@
 import React from 'react';
 import AddItemContainer from './AddItemContainer';
+import { connect } from 'react-redux';
+import { modalOn, modalOff } from '../actions';
 
-//This comp will be a button that will open up the Modal(still have to work out that functionality)
+//Maybe, use this component as an open Modal button instead. & use it to be able to open both addItem & editItem
+//forms, depending which button is clicked on? 
 class AddItemButton extends React.Component {
-  constructor(props) {
+/*   constructor(props) {
     super(props);
     this.state = {
       showModal: false
     };
-  };
+  }; */
 
   handleShowClick = () => {
-    console.log('add item button was clicked!');
-    this.setState({ showModal: true })
+    //this.setState({ showModal: true })
+    this.props.modalOn();
   }
 
   handleHideClick = () => {
-    this.setState({ showModal: false })
+    //this.setState({ showModal: false })
+    this.props.modalOff();
   };
 
   render() {
-    const renderModal = this.state.showModal ? (
+    const renderModal = this.props.showModal ? (
       <AddItemContainer hideModal={this.handleHideClick} />
     ) : '';
 
@@ -33,4 +37,11 @@ class AddItemButton extends React.Component {
   }
 };
 
-export default AddItemButton;
+const mapStateToProps = state => {
+  console.log(state)
+  return {
+    showModal: state.items.showModal
+  }
+}
+
+export default connect(mapStateToProps, { modalOn, modalOff }) (AddItemButton);

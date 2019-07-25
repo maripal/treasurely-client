@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { deleteItem, minusTotal, buyItem } from '../actions';
+import { deleteItem, minusTotal, buyItem, editItem } from '../actions';
 import Item from './Item';
 import './ListItems.css'
 
@@ -19,8 +19,11 @@ class ListItems extends React.Component {
   }
 
   //When an edit button is clicked. A modal w/ clicked item should open.
-  handleEdit = (id, formValues) => {
-    console.log('edit button clicked');
+  //can connect this to redux state now!
+  handleEdit = id => {
+    //console.log('edit button clicked' + id);
+    this.props.editItem(id);
+    console.log('edit button clicked' + id);
   }
 
   renderList = () => {
@@ -46,8 +49,8 @@ class ListItems extends React.Component {
 const mapStateToProps = state => {
   console.log(state.items)
   return {
-    items: state.items.items
+    items: state.items.items,
   };
 };
 
-export default connect(mapStateToProps, { deleteItem, minusTotal, buyItem })(ListItems);
+export default connect(mapStateToProps, { deleteItem, minusTotal, buyItem , editItem })(ListItems);
