@@ -30,20 +30,20 @@ const Modal = props => {
   //FIX FORM STYLING!
 
   //props is coming from our 'addItemForm' component.
-  return ReactDOM.createPortal(
+   return ReactDOM.createPortal(
     <div style={modalStyle}>
       <div style={innerElementStyle}>
         <div style={formTitleStyle}>
           {props.title}
         </div>
         <div>
-          {props.content}
+          {props.children}
         </div>
         <button onClick={props.hideModal}>Hide</button>
       </div>
     </div>,
     document.getElementById('modal')
-  );
-};
+  )
+}
 
 export default Modal;

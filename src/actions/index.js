@@ -4,8 +4,6 @@ export const ADD_ITEM = 'ADD_ITEM';
 export const EDIT_ITEM = 'EDIT_ITEM';
 export const DELETE_ITEM = 'DELETE_ITEM';
 export const BUY_ITEM = 'BUY_ITEM';
-export const MODAL_ON = 'MODAL_ON';
-export const MODAL_OFF = 'MODAL_OFF';
 
 let todoId = 0;
 
@@ -52,15 +50,3 @@ export const buyItem = id => {
     id
   }
 };
-
-export const modalOn = () => {
-  return {
-    type: MODAL_ON
-  }
-};
-
-export const modalOff = () => {
-  return {
-    type: MODAL_OFF
-  }
-}

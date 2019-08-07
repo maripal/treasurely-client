@@ -1,29 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import AddItemForm from './AddItemForm';
-import Modal from './Modal';
 
+//container for edit item form 
 class EditItem extends React.Component {
-
-  //Where the editItem action goes
-  handleSubmit = formValues => {
-    console.log(formValues);
-  }
 
   render() {
     return (
       <div>
-        <Modal
-          title="Edit Form"
-          content={<AddItemForm onSubmit={this.handleSubmit} />}
-        />
+        EditItem
       </div>
-    );
-  };
+    )
+  }
 }
 
-const mapStateToProps = state => {
-  return state;
-}
+const mapStateToProps = (state, ownProps) => {
+  console.log(state);
+  console.log(ownProps);
+  return {
+    item: state.items.items
+  }
+};
 
 export default connect(mapStateToProps)(EditItem);

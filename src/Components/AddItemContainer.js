@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { addItem } from '../actions';
 import { reset } from 'redux-form';
 import AddItemForm from './AddItemForm';
-import Modal from './Modal';
 
 class AddItemContainer extends React.Component {
 
@@ -16,11 +15,7 @@ class AddItemContainer extends React.Component {
   render() {
     return (
       <div>
-        <Modal 
-          title="Add Item"
-          content={<AddItemForm onSubmit={this.onSubmit} />}
-          hideModal={this.props.hideModal}
-        />
+        <AddItemForm onSubmit={this.onSubmit} />
       </div>
     );
   }

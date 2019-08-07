@@ -3,13 +3,10 @@ import {
   EDIT_ITEM,
   DELETE_ITEM,
   BUY_ITEM,
-  MODAL_ON,
-  MODAL_OFF
 } from '../actions';
 
 const initialState = {
   items: [],
-  showModal: false
 }; 
 
 export default (state = initialState, action) => {
@@ -35,10 +32,6 @@ export default (state = initialState, action) => {
           return item;
         };
       })};
-    case MODAL_ON:
-      return { ...state, showModal: !false };
-    case MODAL_OFF:
-      return { ...state, showModal: false }
     default:
       return state;
   }
