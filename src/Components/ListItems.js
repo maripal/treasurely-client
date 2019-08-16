@@ -21,15 +21,12 @@ class ListItems extends React.Component {
   };
 
   handleBuyClick = (amount, id) => {
-
     //subtract from total
     this.props.minusTotal(amount);
-    //add action to change highlight color using the name
+    //add action to change highlight color using the name depending on purchased or not.
     this.props.buyItem(id);
   }
 
-  //The modal opens now! Just have to add functionality to add edit item form here w/ proper item id
-  //Going to have to add a different action to update edited item!
   handleEditModal = id => {
     //console.log(this.props.items[id]);
     this.props.editItem(id);
@@ -39,6 +36,8 @@ class ListItems extends React.Component {
 
   handleCloseModal = () => {
     this.setState({ showModal: false })
+    //Below changes the isEditing redux state back to false when user decides not to update item.
+    this.props.items[this.state.editItemId].isEditing = false;
   }
   
   renderList = () => {
@@ -53,7 +52,6 @@ class ListItems extends React.Component {
   };
 
   render() {
-    console.count();
     const renderEditModal = this.state.showModal ? (
       <Modal title="Edit Item Modal" hideModal={this.handleCloseModal}>
         <EditItem id={this.state.editItemId} />
