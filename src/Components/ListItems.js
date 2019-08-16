@@ -11,7 +11,8 @@ class ListItems extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showModal: false
+      showModal: false,
+      editItemId: undefined
     }
   };
   
@@ -28,11 +29,12 @@ class ListItems extends React.Component {
   }
 
   //The modal opens now! Just have to add functionality to add edit item form here w/ proper item id
+  //Going to have to add a different action to update edited item!
   handleEditModal = id => {
-    //console.log('edit button clicked' + id);
+    //console.log(this.props.items[id]);
     this.props.editItem(id);
     console.log('edit button clicked' + id);
-    this.setState({ showModal: !false })
+    this.setState({ showModal: !false, editItemId: id })
   }
 
   handleCloseModal = () => {
@@ -51,9 +53,10 @@ class ListItems extends React.Component {
   };
 
   render() {
+    console.count();
     const renderEditModal = this.state.showModal ? (
       <Modal title="Edit Item Modal" hideModal={this.handleCloseModal}>
-        <EditItem title='hello' />
+        <EditItem id={this.state.editItemId} />
       </Modal>
     ) : '';
 

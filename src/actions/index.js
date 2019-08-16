@@ -2,6 +2,7 @@ export const ADD_TO_TOTAL = 'ADD_TO_TOTAL';
 export const MINUS_TOTAL = 'MINUS_TOTAL';
 export const ADD_ITEM = 'ADD_ITEM';
 export const EDIT_ITEM = 'EDIT_ITEM';
+export const UPDATE_ITEM = 'UPDATE_ITEM';
 export const DELETE_ITEM = 'DELETE_ITEM';
 export const BUY_ITEM = 'BUY_ITEM';
 
@@ -26,7 +27,8 @@ export const addItem = item => {
     type: ADD_ITEM,
     id: todoId++,
     item,
-    purchased: false
+    purchased: false,
+    isEditing: false
   }
 };
 
@@ -34,6 +36,16 @@ export const editItem = id => {
   return {
     type: EDIT_ITEM,
     id
+  }
+};
+
+export const updateItem = (id, item) => {
+  return {
+    type: UPDATE_ITEM,
+    id,
+    item,
+    purchased: false,
+    isEditing: false
   }
 }
 

@@ -1,25 +1,32 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import AddItemForm from './AddItemForm';
+import { reset } from 'redux-form';
+import { updateItem } from '../actions';
+import EditItemForm from './EditItemForm';
 
-//container for edit item form 
+//Got this working!!! :D Now, figure out if I need the renderEditItem method code or can just render the EditItemForm itself instead.
 class EditItem extends React.Component {
+
+  onSubmit = (formValues, dispatch) => {
+    console.log(formValues);
+    this.props.updateItem(this.props.id, formValues);
+    dispatch(reset('editItem'));
+  }
 
   render() {
     return (
       <div>
-        EditItem
+       <EditItemForm key={this.props.id} onSubmit={this.onSubmit} />
       </div>
     )
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = state => {
   console.log(state);
-  console.log(ownProps);
   return {
-    item: state.items.items
+    items: state.items.items
   }
-};
+}
 
-export default connect(mapStateToProps)(EditItem);
+export default connect(mapStateToProps, { updateItem })(EditItem);
