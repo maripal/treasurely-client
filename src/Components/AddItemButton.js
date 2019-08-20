@@ -27,9 +27,22 @@ class AddItemButton extends React.Component {
         <AddItemContainer />
       </Modal>
     ) : ''; 
+
+    let buttonStyle = {
+      position: 'relative',
+      top: '100px',
+      left: '0',
+      backgroundColor: '#071419',
+      border: '1px solid #071419',
+      borderRadius: '50px',
+      color: 'white',
+      padding: '15px 25px',
+      width: '100%',
+    };
+
     return (
       <div>
-        <button onClick={this.handleShowClick}>Add Item+</button>
+        <button style={buttonStyle} onClick={this.handleShowClick}>Add Item</button>
         {renderModal}
       </div>
     );
