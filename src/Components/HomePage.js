@@ -7,10 +7,26 @@ import AddItemButton from './AddItemButton';
 class HomePage extends React.Component {
 
   render() {
+    let containerStyle = {
+      backgroundColor: '#1d7c54',
+      height: '50vh',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      borderRadius: '0 0 35px 35px',
+      padding: '25px'
+    }
+
+    let totalStyle = {
+      textAlign: 'center',
+      fontSize: '3em',
+      marginTop: '65px',
+      color: 'white'
+    }
+
     return (
-      <div>
-        HomePage
-        <h1>${this.props.total.toFixed(2)}</h1>
+      <div style={containerStyle}>
+        <h1 style={totalStyle}>${this.props.total.toFixed(2)}</h1>
         <AddToTotalForm />
         <AddItemButton />
         <ListItems />
@@ -18,9 +34,6 @@ class HomePage extends React.Component {
     );
   }
 };
-
-//FIGURE OUT WHY CONSOLE BELOW LOGS OUT TWICE & EVERY TIME I CLICK INSIDE AN INPUT
-//Above happens because I import 'AddItemButton' component, but WHY? Has something to do w/ Redux Form(?)
 
 const mapStateToProps = state => {
   console.log(state);
