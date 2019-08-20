@@ -4,7 +4,7 @@ import { ADD_TO_TOTAL, MINUS_TOTAL } from '../actions';
 //   totalSavings: 0
 // }
 
-export default (state = 100, action) => {
+export default (state = 0, action) => {
   switch(action.type) {
     case ADD_TO_TOTAL:
       return state + action.amount;
