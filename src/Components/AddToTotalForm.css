@@ -1,0 +1,33 @@
+.total-form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.total-input {
+  flex: 0 0 100%;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.add-button, .minus-button {
+  color: #fff;
+  width: 70px;
+  border-radius: 50%;
+  padding: 20px 15px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.add-button {
+  background-color: #68c49f;
+  border: 1px solid #68c49f;
+  margin-right: 20px;
+}
+
+.minus-button {
+  background-color: #c46868;
+  border: 1px solid #c46868;
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addToTotal, minusTotal } from '../actions';
+import './AddToTotalForm.css';
 
 class AddToTotalForm extends React.Component {
   constructor(props) {
@@ -33,7 +34,7 @@ class AddToTotalForm extends React.Component {
   render() {
     return (
       <div>
-        <form>
+        <form className="total-form">
           <input 
             name="total"
             type="text"
@@ -41,10 +42,11 @@ class AddToTotalForm extends React.Component {
             onChange={this.onChange}
             placeholder="Add amount"
             value={this.state.amountInput}
+            className="total-input"
             required
           />
-          <button type="submit" onClick={this.addMoneySubmit}>Add Money</button>
-          <button type="submit" onClick={this.subtractMoneySubmit}>Subtract Money</button>
+          <button className="add-button" type="submit" onClick={this.addMoneySubmit}>+</button>
+          <button className="minus-button" type="submit" onClick={this.subtractMoneySubmit}>-</button>
         </form>
       </div>
     );
