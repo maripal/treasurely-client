@@ -41,7 +41,7 @@ class AddItemButton extends React.Component {
 
     return (
       <div>
-        <button style={buttonStyle} onClick={this.handleShowClick}>Add Item</button>
+        <button style={buttonStyle} onClick={this.handleShowClick}>Add Item to wishlist</button>
         {renderModal}
       </div>
     );
