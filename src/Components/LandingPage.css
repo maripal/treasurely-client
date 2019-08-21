@@ -1,0 +1,15 @@
+.landing-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.home-link {
+  text-decoration: none;
+  color: #000;
+  border: 1px solid #1c7c54;
+  border-radius: 5px;
+  width: 100px;
+  padding: 10px 5px;
+  text-align: center;
+}
