@@ -1,5 +1,6 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
+import './EditItemForm.css';
 
 
 const validate = formValues => {
@@ -20,7 +21,7 @@ const renderError = ({ error, touched }) => {
   if (touched && error) {
     return (
       <div>
-        <p>{error}</p>
+        <p className="error-text">{error}</p>
       </div>
     )
   }
@@ -30,7 +31,7 @@ const renderField = ({ input, label, type, meta }) => {
   return (
     <div className="input-container">
       <label>{label}</label>
-      <input {...input} type={type} placeholder={label} />
+      <input {...input} type={type} placeholder={label} className="input-box" />
       {renderError(meta)}
     </div>
   )
@@ -41,7 +42,7 @@ const EditItemForm = props => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div>
+      <div className="form-container">
         <Field 
           name="itemName"
           component={renderField}
@@ -55,7 +56,7 @@ const EditItemForm = props => {
           label="Price"
           parse={val => Number(val)}
         />
-        <button type="submit">Update</button>
+        <button className="submit-button" type="submit">Update</button>
       </div>
     </form>
   );
