@@ -1,0 +1,17 @@
+.item-name {
+  margin-right: 5px;
+  letter-spacing: 0.5px;
+}
+
+.price {
+  letter-spacing: 1px;
+  margin-right: 5px;
+}
+
+.item-action-button {
+  background-color: white;
+  border: 1px solid gray;
+  padding: 10px 5px;
+  width: 18%;
+  font-size: 14px;
+}

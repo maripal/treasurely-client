@@ -1,11 +1,13 @@
-.item div {
+.item div, .purchased div {
   display: flex;
-  justify-content: space-between;
-  background-color: aquamarine;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.item div {
+  background-color: #68c49f;
 }
 
 .purchased div {
-  display: flex;
-  justify-content: space-between;
   background-color: lightcoral;
 }

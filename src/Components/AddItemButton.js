@@ -29,14 +29,14 @@ class AddItemButton extends React.Component {
     ) : ''; 
 
     let buttonStyle = {
-      position: 'relative',
-      top: '120px',
       backgroundColor: '#071419',
       border: '1px solid #071419',
       borderRadius: '50px',
       color: 'white',
       padding: '15px 25px',
       width: '100%',
+      marginTop: '50px',
+      marginBottom: '30px'
     };
 
     return (
