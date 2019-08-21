@@ -7,9 +7,9 @@ import AddItemButton from './AddItemButton';
 class HomePage extends React.Component {
 
   render() {
-    let containerStyle = {
+    let totalContainer = {
       backgroundColor: '#1d7c54',
-      height: '50vh',
+      height: 'auto',
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
@@ -25,11 +25,13 @@ class HomePage extends React.Component {
     }
 
     return (
-      <div style={containerStyle}>
-        <h1 style={totalStyle}>${this.props.total.toFixed(2)}</h1>
-        <AddToTotalForm />
-        <AddItemButton />
-        <ListItems />
+      <div>
+        <div style={totalContainer}>
+          <h1 style={totalStyle}>${this.props.total.toFixed(2)}</h1>
+          <AddToTotalForm />
+        </div>
+          <AddItemButton />
+          <ListItems />
       </div>
     );
   }
