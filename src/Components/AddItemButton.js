@@ -30,8 +30,7 @@ class AddItemButton extends React.Component {
 
     let buttonStyle = {
       position: 'relative',
-      top: '100px',
-      left: '0',
+      top: '120px',
       backgroundColor: '#071419',
       border: '1px solid #071419',
       borderRadius: '50px',

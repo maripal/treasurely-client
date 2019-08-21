@@ -44,7 +44,7 @@ const renderError = ({ error, touched }) => {
   if (touched && error) {
     return (
       <div>
-        <p>{error}</p>
+        <p className="error-text">*{error}</p>
       </div>
     )
   }
@@ -54,7 +54,7 @@ const renderField = ({ input, label, type, meta }) => {
   return (
     <div className="input-container">
       <label>{label}</label>
-      <input {...input} type={type} placeholder={label} />
+      <input {...input} type={type} placeholder={label} className="input-box" />
       {renderError(meta)}
     </div>
   )

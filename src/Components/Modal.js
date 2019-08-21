@@ -17,15 +17,26 @@ const Modal = props => {
 
   const innerElementStyle = {
     backgroundColor: 'white',
-    width: '500px',
-    height: '50vh',
+    width: '100%',
+    height: '60vh',
     padding: '15px',
+    position: 'relative',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center'
   }
 
   const formTitleStyle = {
     textAlign: 'center',
-    marginBottom: '25px'
   };
+
+  const closeButton = {
+    position: 'absolute',
+    top: '10px',
+    right: '5px',
+    fontSize: '18px',
+    fontWeight: '700'
+  }
 
   //FIX FORM STYLING!
 
@@ -39,7 +50,7 @@ const Modal = props => {
         <div>
           {props.children}
         </div>
-        <button onClick={props.hideModal}>Hide</button>
+        <button style={closeButton} onClick={props.hideModal}>x</button>
       </div>
     </div>,
     document.getElementById('modal')
