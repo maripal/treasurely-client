@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { deleteItem, minusTotal, buyItem, editItem } from '../actions';
+import { deleteItem, minusTotal, buyItem, editItem, addToTotal} from '../actions';
 import Item from './Item';
 import Modal from './Modal';
 import EditItem from './EditItem';
@@ -20,15 +20,23 @@ class ListItems extends React.Component {
     this.props.deleteItem(id);
   };
 
+  //Should I keep this here, or make buy button its own component and add its functionality there?
   handleBuyClick = (amount, id) => {
-    //subtract from total
-    this.props.minusTotal(amount);
-    //add action to change highlight color using the name depending on purchased or not.
-    this.props.buyItem(id);
+    console.log(this.props.items[id])
+    //check if item is purchased and dispatch these actions if false
+    if (!this.props.items[id].purchased) {
+      //subtract from total
+      this.props.minusTotal(amount);
+      //add action to change highlight color using the name depending on purchased or not.
+      this.props.buyItem(id);
+    } else {
+      //this would undo the buy action, if user mistakenly/regrets click on buy button.
+      this.props.addToTotal(amount);
+      this.props.items[id].purchased = false;
+    }
   }
 
   handleEditModal = id => {
-    //console.log(this.props.items[id]);
     this.props.editItem(id);
     console.log('edit button clicked' + id);
     this.setState({ showModal: !false, editItemId: id })
@@ -45,7 +53,7 @@ class ListItems extends React.Component {
     return this.props.items.map(item => {
       return (
         <div key={item.id} className={item.purchased ? 'purchased' : 'item'}>
-          <Item {...item} clickDelete={this.handleDelete} editClick={this.handleEditModal} buyClick={this.handleBuyClick} />
+          <Item className={this.props.total >= item.item.price && item.purchased === false ? 'notify-buy-btn' : ''} {...item} clickDelete={this.handleDelete} editClick={this.handleEditModal} buyClick={this.handleBuyClick} />
         </div>
       )
     });
@@ -59,7 +67,7 @@ class ListItems extends React.Component {
     ) : '';
 
     return (
-      <div>
+      <div className={this.props.items.length > 0 ? 'list-container' : ''}>
         {this.renderList()}
         {renderEditModal}
       </div>
@@ -70,8 +78,9 @@ class ListItems extends React.Component {
 const mapStateToProps = state => {
   console.log(state.items)
   return {
+    total: state.total,
     items: state.items.items,
   };
 };
 
-export default connect(mapStateToProps, { deleteItem, minusTotal, buyItem , editItem })(ListItems);
+export default connect(mapStateToProps, { deleteItem, minusTotal, buyItem, editItem, addToTotal })(ListItems);

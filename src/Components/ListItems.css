@@ -1,10 +1,20 @@
+.list-container {
+  margin-bottom: 25px;
+  border-bottom: 1px solid hsla(0, 0%, 50%, 0.2);
+}
+
 .item div, .purchased div {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
 }
 
-.item div {
+.item {
+  border-top: 1px solid hsla(0, 0%, 50%, 0.2);
+}
+
+.notify-buy-btn {
+  border: 1px solid #68c49f;
   background-color: #68c49f;
 }
 

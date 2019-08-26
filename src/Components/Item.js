@@ -8,7 +8,7 @@ const Item = props => {
     <div>
       <h4 className="item-name">{props.item.itemName}</h4>
       <p className="price">${props.item.price.toFixed(2)}</p>
-      <button className="item-action-button" onClick={() => props.buyClick(props.item.price, props.id)}>Buy</button>
+      <button className={`item-action-button ${props.className}`} onClick={() => props.buyClick(props.item.price, props.id)}>Buy</button>
       <button className="item-action-button" onClick={() => props.editClick(props.id)}>Edit</button>
       <button className="item-action-button" onClick={() => props.clickDelete(props.id)}>Delete</button>
     </div>
