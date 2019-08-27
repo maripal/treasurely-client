@@ -4,31 +4,21 @@ import { connect } from 'react-redux';
 import AddToTotalForm from './AddToTotalForm';
 import ListItems from './ListItems';
 import AddItemButton from './AddItemButton';
+import './HomePage.css';
 
 class HomePage extends React.Component {
 
   render() {
-    let totalContainer = {
-      backgroundColor: '#1d7c54',
-      height: 'auto',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      borderRadius: '0 0 35px 35px',
-      padding: '25px'
-    }
+    //Changes total container color to notify when total is low
+    let containerColor = this.props.total  <= 0 ? 'empty-total-notification' : this.props.total <= 50 ? 'low-total-notification' : '';
 
-    let totalStyle = {
-      textAlign: 'center',
-      fontSize: '3em',
-      marginTop: '65px',
-      color: 'white'
-    }
+    //Changes text color so it's visible against low total color 
+    let totalColor = this.props.total > 0 && this.props.total <= 50 ? 'low-total' : '';
 
     return (
       <div>
-        <div style={totalContainer}>
-          <h1 style={totalStyle}>${this.props.total.toFixed(2)}</h1>
+        <div className={`total-container ${containerColor}`}>
+          <h1 className={`total ${totalColor}`}>${this.props.total.toFixed(2)}</h1>
           <AddToTotalForm />
         </div>
           <AddItemButton />

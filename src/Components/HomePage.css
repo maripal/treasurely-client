@@ -1,0 +1,28 @@
+.total-container {
+  background-color: #1d7c54;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 0 0 35px 35px;
+  padding: 25px;
+}
+
+.total {
+  text-align: center;
+  font-size: 3em;
+  margin-top: 65px;
+  color: white;
+}
+
+.low-total {
+  color: hsla(201, 52%, 6%, 1);
+}
+
+.low-total-notification {
+  background-color: hsla(60, 100%, 64%, 0.88);
+}
+
+.empty-total-notification {
+  background-color: hsla(1, 77%, 55%, 0.95);
+}
