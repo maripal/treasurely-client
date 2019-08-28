@@ -2,14 +2,34 @@
   display: flex;
   justify-content: center;
   margin-top: 50px;
+  height: 70vh;
+}
+
+header {
+  height: 90vh;
+  padding: 15px;
+}
+
+.main-heading {
+  font-size: 55px;
+}
+
+.sub-heading {
+  margin-bottom: 50px;
+}
+
+.sub-heading-first, .sub-heading-second {
+  display: inline-block;
 }
 
 .home-link {
+  display: inline-block;
   text-decoration: none;
   color: #000;
   border: 1px solid #1c7c54;
   border-radius: 5px;
-  width: 100px;
-  padding: 10px 5px;
+  width: 175px;
+  padding: 15px 10px;
   text-align: center;
+  font-size: 18px;
 }
