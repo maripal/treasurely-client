@@ -13,6 +13,7 @@ const LandingPage = () => {
         </h2>
 
         <Link to="/home" className="home-link">Home</Link>
+        <Link to="/signup" className="signup-link">Sign Up!</Link>
       </header>
     </div>
   );
