@@ -18,11 +18,13 @@ header {
   margin-bottom: 50px;
 }
 
-.sub-heading-first, .sub-heading-second {
+.sub-heading-first,
+.sub-heading-second {
   display: inline-block;
 }
 
-.home-link {
+.home-link,
+.signup-link {
   display: inline-block;
   text-decoration: none;
   color: #000;
