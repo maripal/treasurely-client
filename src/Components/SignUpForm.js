@@ -1,7 +1,7 @@
 import React from 'react';
-import { reduxForm, Field, SubmissionError, focus } from 'redux-form';
+import { reduxForm, Field, SubmissionError, focus, reset } from 'redux-form';
 import Input from './Input';
-import { required, isTrimmed, pwMinLength, pwMaxLength, usernameMinLength } from '../validators';
+import { required, nonEmpty, isTrimmed, pwMinLength, pwMaxLength, usernameMinLength } from '../validators';
 
 export class SignUpForm extends React.Component {
   onSubmit = values => {
@@ -9,6 +9,7 @@ export class SignUpForm extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     let successMessage;
     if (this.props.submitSucceeded) {
       successMessage = (
@@ -34,16 +35,21 @@ export class SignUpForm extends React.Component {
           type="text"
           component={Input}
           label="Username"
-          validate={[ required, isTrimmed, usernameMinLength ]}
+          validate={[ required, nonEmpty, isTrimmed, usernameMinLength ]}
         />
         <Field 
           name="password"
           type="text"
           component={Input}
           label="Password"
-          validate={[ required, pwMinLength, pwMaxLength ]}
+          validate={[ required, nonEmpty, pwMinLength, pwMaxLength ]}
         />
-        <button type="submit">Sign Up</button>
+        <button 
+          type="submit" 
+          disabled={this.props.pristine || this.props.submitting}
+        >
+          Sign Up
+        </button>
       </form>
     )
   }
@@ -52,5 +58,7 @@ export class SignUpForm extends React.Component {
 export default reduxForm ({
   form: 'signup',
   onSubmitFail: (errors, dispatch) => 
-    dispatch(focus('signup', Object.keys(errors)[0]))
+    dispatch(focus('signup', Object.keys(errors)[0])),
+  // This resets fields after form is submitted successfully
+  onSubmitSuccess: (result, dispatch) => dispatch(reset('signup'))
 })(SignUpForm);
