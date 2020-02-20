@@ -1,7 +1,7 @@
 import React from 'react';
 import { reduxForm, Field, SubmissionError, focus, reset } from 'redux-form';
 import Input from './Input';
-import { required, nonEmpty, isTrimmed, pwMinLength, pwMaxLength, usernameMinLength } from '../validators';
+import { required, nonEmpty, isTrimmed, pwMinLength, pwMaxLength, usernameMinLength, matches } from '../validators';
 
 export class SignUpForm extends React.Component {
   onSubmit = values => {
@@ -42,7 +42,7 @@ export class SignUpForm extends React.Component {
           type="text"
           component={Input}
           label="Password"
-          validate={[ required, nonEmpty, pwMinLength, pwMaxLength ]}
+          validate={[ required, nonEmpty, pwMinLength, pwMaxLength, matches ]}
         />
         <button 
           type="submit" 

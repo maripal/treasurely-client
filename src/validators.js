@@ -6,3 +6,4 @@ export const pwMinLength = minLength(8);
 export const maxLength = max => value => value && value.length > max ? `Must be ${max} characters or less` : undefined;
 export const pwMaxLength = maxLength(72);
 export const isTrimmed = value => value.trim() === value ? undefined : 'Cannot start or end with spaces'; 
+export const matches = field => (value, allValues) => field in allValues && value.trim() === allValues[field].trim() ? undefined : 'Does not match';
