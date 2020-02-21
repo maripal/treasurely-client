@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Nav from './Nav';
 import LandingPage from './LandingPage';
-import Login from './Login';
+import LoginPage from './LoginPage';
 import SignUpPage from './SignUpPage';
 import HomePage from './HomePage';
 import './App.css';
@@ -14,7 +14,7 @@ class App extends React.Component {
         <Router>
           <Nav />
           <Route path="/" exact component={LandingPage} />
-          <Route path="/login" exact component={Login} />
+          <Route path="/login" exact component={LoginPage} />
           <Route path="/signup" exact component={SignUpPage} />
           <Route path="/home" exact component={HomePage} />
         </Router>
