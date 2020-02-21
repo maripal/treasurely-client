@@ -1,8 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import LoginForm from './LoginForm';
 import './LandingPage.css';
+import { connect } from 'react-redux';
 
-const LandingPage = () => {
+export function LandingPage(props) {
+  
+  if (props.loggedIn) {
+    return <Redirect to="/home" />
+  }
+  
   return (
     <div className="landing-container">
       <header>
@@ -12,11 +19,16 @@ const LandingPage = () => {
           <span className="sub-heading-second">&amp; create a wishlist</span>
         </h2>
 
+        <LoginForm />
         <Link to="/home" className="home-link">Home</Link>
         <Link to="/signup" className="signup-link">Sign Up!</Link>
       </header>
     </div>
-  );
+    );
 };
 
-export default LandingPage;
+const mapStateToProps = state => ({
+  loggedIn: state.auth.currentUser !== null
+});
+
+export default connect(mapStateToProps)(LandingPage);
