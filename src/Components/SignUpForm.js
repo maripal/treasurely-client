@@ -1,5 +1,7 @@
 import React from 'react';
-import { reduxForm, Field, SubmissionError, focus, reset } from 'redux-form';
+import { reduxForm, Field, focus, reset } from 'redux-form';
+import { registerUser } from '../actions/users';
+import { login } from '../actions/auth';
 import Input from './Input';
 import { required, nonEmpty, isTrimmed, pwMinLength, pwMaxLength, usernameMinLength, matches } from '../validators';
 
@@ -8,6 +10,12 @@ const matchesPassword = matches('password');
 export class SignUpForm extends React.Component {
   onSubmit = values => {
     console.log(values);
+    const { firstName, username, password } = values;
+    const user = { firstName, username, password };
+    
+    return this.props
+      .dispatch(registerUser(user))
+      .then(() => this.props.dispatch(login(username, password)));
   }
 
   render() {
@@ -33,6 +41,13 @@ export class SignUpForm extends React.Component {
         {successMessage}
         {errorMessage}
         <Field 
+          name="firstName"
+          type="text"
+          component={Input}
+          label="First Name"
+          validate={[ required, nonEmpty, isTrimmed, ]}
+        />
+        <Field 
           name="username"
           type="text"
           component={Input}
@@ -44,7 +59,7 @@ export class SignUpForm extends React.Component {
           type="text"
           component={Input}
           label="Password"
-          validate={[ required, nonEmpty, pwMinLength, pwMaxLength, matches ]}
+          validate={[ required, nonEmpty, pwMinLength, pwMaxLength ]}
         />
         <Field 
           name="passwordConfirm"
