@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-//import { withRouter } from 'react-router-dom';
+import requiresLogin from './Requires-Login';
 import AddToTotalForm from './AddToTotalForm';
 import ListItems from './ListItems';
 import AddItemButton from './AddItemButton';
 import './HomePage.css';
 
 class HomePage extends React.Component {
+
 
   render() {
     //Changes total container color to notify when total is low
@@ -35,4 +36,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(HomePage);
+export default requiresLogin()(connect(mapStateToProps)(HomePage));
