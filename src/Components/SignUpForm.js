@@ -45,7 +45,7 @@ export class SignUpForm extends React.Component {
           type="text"
           component={Input}
           label="First Name"
-          validate={[ required, nonEmpty, isTrimmed, ]}
+          validate={[ required, nonEmpty, isTrimmed ]}
         />
         <Field 
           name="username"
@@ -56,14 +56,14 @@ export class SignUpForm extends React.Component {
         />
         <Field 
           name="password"
-          type="text"
+          type="password"
           component={Input}
           label="Password"
           validate={[ required, nonEmpty, pwMinLength, pwMaxLength ]}
         />
         <Field 
           name="passwordConfirm"
-          type="text"
+          type="password"
           component={Input}
           label="Confirm password"
           validate={[ required, nonEmpty, matchesPassword ]}
