@@ -29,8 +29,8 @@ import './AddItemForm.css';
 const validate = formValues => {
   const errors = {};
 
-  if (!formValues.itemName) {
-    errors.itemName = "You must enter an item name"
+  if (!formValues.name) {
+    errors.name = "You must enter an item name"
   }
 
   if (!formValues.price) {
@@ -67,7 +67,7 @@ const AddItemForm = props => {
     <form onSubmit={handleSubmit}>
       <div className="form-container">
         <Field
-          name="itemName"
+          name="name"
           component={renderField}
           type="text"
           label="Item Name"
