@@ -21,7 +21,7 @@ class Nav extends React.Component {
 
     return (
       <div className="nav">
-        <Link to="/">Treasurly</Link>
+        <Link to="/">Treasurely</Link>
         {logOutBtn}
       </div>
     );
