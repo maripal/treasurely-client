@@ -24,7 +24,7 @@ class ListItems extends React.Component {
   handleBuyClick = (amount, id) => {
     console.log(this.props.items[id])
     //check if item is purchased and dispatch these actions if false
-    if (!this.props.items[id].purchased) {
+    if (!this.props.items[id]) {
       //subtract from total
       this.props.minusTotal(amount);
       //add action to change highlight color using the name depending on purchased or not.
@@ -53,7 +53,7 @@ class ListItems extends React.Component {
     return this.props.items.map(item => {
       return (
         <div key={item.id} className={item.purchased ? 'purchased' : 'item'}>
-          <Item className={this.props.total >= item.item.price && item.purchased === false ? 'notify-buy-btn' : ''} {...item} clickDelete={this.handleDelete} editClick={this.handleEditModal} buyClick={this.handleBuyClick} />
+          <Item className={this.props.total >= item.price && item.purchased === false ? 'notify-buy-btn' : ''} {...item} clickDelete={this.handleDelete} editClick={this.handleEditModal} buyClick={this.handleBuyClick} />
         </div>
       )
     });
