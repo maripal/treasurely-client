@@ -22,17 +22,19 @@ class ListItems extends React.Component {
 
   //Should I keep this here, or make buy button its own component and add its functionality there?
   handleBuyClick = (amount, id) => {
-    console.log(this.props.items[id])
-    //check if item is purchased and dispatch these actions if false
-    if (!this.props.items[id]) {
-      //subtract from total
-      this.props.minusTotal(amount);
-      //add action to change highlight color using the name depending on purchased or not.
+    console.log(this.props.items)
+    console.log(id);
+  
+    // Find item that buy was clicked to dispatch actions
+    const item = this.props.items.find(item => item.id === id);
+    
+    if (!item.purchased) {
       this.props.buyItem(id);
+      this.props.minusTotal(amount)
     } else {
-      //this would undo the buy action, if user mistakenly/regrets click on buy button.
+      // If buy click was a mistake, this changes state back when clicked again
       this.props.addToTotal(amount);
-      this.props.items[id].purchased = false;
+      item.purchased = false
     }
   }
 
@@ -49,8 +51,9 @@ class ListItems extends React.Component {
   }
   
   renderList = () => {
-    console.log(this.props)
+    console.log(this.props.items)
     return this.props.items.map(item => {
+      console.log(item)
       return (
         <div key={item.id} className={item.purchased ? 'purchased' : 'item'}>
           <Item className={this.props.total >= item.price && item.purchased === false ? 'notify-buy-btn' : ''} {...item} clickDelete={this.handleDelete} editClick={this.handleEditModal} buyClick={this.handleBuyClick} />
