@@ -44,10 +44,10 @@ const EditItemForm = props => {
     <form onSubmit={handleSubmit}>
       <div className="form-container">
         <Field 
-          name="itemName"
+          name="name"
           component={renderField}
           type="text"
-          label="Item Name"
+          label="name"
         />
         <Field
           name="price"
