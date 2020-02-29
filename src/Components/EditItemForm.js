@@ -6,8 +6,8 @@ import './EditItemForm.css';
 const validate = formValues => {
   const errors = {};
 
-  if (!formValues.itemName) {
-    errors.itemName = "You must enter an item name"
+  if (!formValues.name) {
+    errors.name = "You must enter an item name"
   }
 
   if (!formValues.price) {
@@ -47,7 +47,7 @@ const EditItemForm = props => {
           name="name"
           component={renderField}
           type="text"
-          label="name"
+          label="Name"
         />
         <Field
           name="price"
