@@ -70,7 +70,7 @@ const AddItemForm = props => {
           name="name"
           component={renderField}
           type="text"
-          label="Item Name"
+          label="Name"
         />
         <Field 
           name="price"
