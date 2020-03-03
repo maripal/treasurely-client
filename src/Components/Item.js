@@ -2,8 +2,6 @@ import React from 'react';
 import './Item.css';
 
 const Item = props => {
-  console.log(props);
-
   return (
     <div>
       <h4 className="item-name">{props.name}</h4>
