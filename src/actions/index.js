@@ -5,6 +5,7 @@ export const ITEM_REQUEST = 'ITEM_REQUEST';
 export const ITEM_SUCCESS = 'ITEM_SUCCESS';
 export const ITEM_ERROR = 'ITEM_ERROR';
 export const ITEMS_LOADING = 'ITEMS_LOADING';
+export const UPDATE_ITEM_REQUEST = 'UPDATE_ITEM_REQUEST';
 export const UPDATE_SUCCESS = 'UPDATE_SUCCESS';
 export const ADD_TO_TOTAL = 'ADD_TO_TOTAL';
 export const MINUS_TOTAL = 'MINUS_TOTAL';
@@ -44,9 +45,17 @@ export const itemsLoading = () => {
   };
 };
 
-export const udpateSuccess = () => {
+export const editItem = id => {
+  return {
+    type: EDIT_ITEM,
+    id
+  }
+};
+
+export const udpateSuccess = item => {
   return{
-    type: UPDATE_SUCCESS
+    type: UPDATE_SUCCESS,
+    item
   }
 }
 
@@ -63,16 +72,6 @@ export const minusTotal = amount => {
     amount
   }
 };
-
-// export const addItem = item => {
-//   return {
-//     type: ADD_ITEM,
-//     id: todoId++,
-//     item,
-//     purchased: false,
-//     isEditing: false
-//   }
-// };
 
 export const getItems = () => (dispatch, getState) => {
   dispatch(itemsLoading());
@@ -92,10 +91,7 @@ export const getItems = () => (dispatch, getState) => {
 }
 
 export const addItem = item => (dispatch, getState) => {
-
   dispatch(itemRequest());
-  console.log(`add item action: ${JSON.stringify(item)}`)
-  console.log(`this is state: ${JSON.stringify(getState())}`)
   const authToken = getState().auth.authToken;
 
   return fetch(`${API_BASE_URL}/items/add`, {
@@ -127,34 +123,34 @@ export const getItem = id => (dispatch, getState) => {
     .catch(err => dispatch(itemError(err)))
 }
 
-export const editItem = id => {
+export const updateItemAction = (id, values) => {
   return {
-    type: EDIT_ITEM,
-    id
+    type: UPDATE_ITEM_REQUEST,
+    id,
+    values
   }
-};
+}
 
 export const updateItem = (id, values) => (dispatch, getState) => {
-  dispatch(itemRequest())
+  const { name, price } = values
+  dispatch(updateItemAction())
   const authToken = getState().auth.authToken;
-  const { name, price } = values;
-  let data = {id, name, price}
-  
+  console.log(`update data: ${JSON.stringify(values)}`)
   return fetch(`${API_BASE_URL}/items/update/${id}`, {
     method: 'PUT',
     headers: {
       'content-type': 'application/json',
       'Authorization': `Bearer ${authToken}`
     },
-    body: JSON.stringify(data)
+    body: JSON.stringify({id, name, price})
   })
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
-    .then(() => dispatch(udpateSuccess()))
+    .then(item => dispatch(udpateSuccess(item)))
     .catch(err => dispatch(itemError(err)))
 }
 
-export const deleteItem = id => {
+export const deleteItem = id =>  {
   return {
     type: DELETE_ITEM,
     id
