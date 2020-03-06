@@ -37,8 +37,7 @@ export default (state = initialState, action) => {
       return {...state, isEditing: !false};
     case UPDATE_SUCCESS:
     case UPDATE_ITEM: 
-      //return {...state, items: state.items.map(item => item.id === action.id ? {...item, item: action.item, isEditing: false} : item)}
-      return {...state, items: state.items.map(item => item.id === action.item.id ? {item: action.item} : item)}
+      return {...state, items: state.items.map(item => item.id === action.item.id ? action.item : item), isEditing: false}
     case DELETE_ITEM:
       return {items: state.items.filter(item => item.id !== action.id)}
     case BUY_ITEM:
