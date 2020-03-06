@@ -4,6 +4,7 @@ import {
   ITEM_ERROR,
   ITEMS_LOADING,
   UPDATE_SUCCESS,
+  UPDATE_ITEM_REQUEST,
   GET_ITEMS,
   ADD_ITEM,
   EDIT_ITEM,
@@ -30,13 +31,14 @@ export default (state = initialState, action) => {
     case ITEM_SUCCESS:
     case ADD_ITEM:
       return {...state, items: [...state.items, action.item], isLoading: false};
+    case UPDATE_ITEM_REQUEST:
     case EDIT_ITEM:
       // return {...state, items: state.items.map(item => item.id === action.id ? {...item, isEditing: !false} : item)};
       return {...state, isEditing: !false};
     case UPDATE_SUCCESS:
     case UPDATE_ITEM: 
       //return {...state, items: state.items.map(item => item.id === action.id ? {...item, item: action.item, isEditing: false} : item)}
-      return {...state, items: state.items.map(item => item.id === action.item.id ? {...item, item: action.item} : item)}
+      return {...state, items: state.items.map(item => item.id === action.item.id ? {item: action.item} : item)}
     case DELETE_ITEM:
       return {items: state.items.filter(item => item.id !== action.id)}
     case BUY_ITEM:
