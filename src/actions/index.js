@@ -123,16 +123,14 @@ export const getItem = id => (dispatch, getState) => {
     .catch(err => dispatch(itemError(err)))
 }
 
-export const updateItemAction = (id, values) => {
+export const updateItemAction = () => {
   return {
     type: UPDATE_ITEM_REQUEST,
-    id,
-    values
   }
 }
 
 export const updateItem = (id, values) => (dispatch, getState) => {
-  const { name, price } = values
+  const { name, price } = values;
   dispatch(updateItemAction())
   const authToken = getState().auth.authToken;
   console.log(`update data: ${JSON.stringify(values)}`)
