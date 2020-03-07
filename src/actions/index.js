@@ -7,6 +7,9 @@ export const ITEM_ERROR = 'ITEM_ERROR';
 export const ITEMS_LOADING = 'ITEMS_LOADING';
 export const UPDATE_ITEM_REQUEST = 'UPDATE_ITEM_REQUEST';
 export const UPDATE_SUCCESS = 'UPDATE_SUCCESS';
+export const DELETE_ITEM_REQUEST = 'DELETE_ITEM_REQUEST';
+export const DELETE_ITEM_SUCCESS = 'DELETE_ITEM_SUCCESS';
+export const DELETE_ITEM_ERROR = 'DELETE_ITEM_ERROR';
 export const ADD_TO_TOTAL = 'ADD_TO_TOTAL';
 export const MINUS_TOTAL = 'MINUS_TOTAL';
 export const GET_ITEMS = 'GET_ITEMS';
@@ -146,13 +149,41 @@ export const updateItem = (id, values) => (dispatch, getState) => {
     .then(res => res.json())
     .then(item => dispatch(udpateSuccess(item)))
     .catch(err => dispatch(itemError(err)))
+};
+
+export const deleteItemAction = () => {
+  return {
+    type: DELETE_ITEM_REQUEST,
+  };
+};
+
+export const deleteItemSuccess = id => {
+  return {
+    type: DELETE_ITEM_SUCCESS,
+    id
+  };
+};
+
+export const deleteItemError = error => {
+  return {
+    type: DELETE_ITEM_ERROR,
+    error
+  }
 }
 
-export const deleteItem = id =>  {
-  return {
-    type: DELETE_ITEM,
-    id
-  }
+export const deleteItem = id => (dispatch, getState) => {
+  dispatch(deleteItemAction())
+  console.log(`delete item: ${id}`)
+  const authToken = getState().auth.authToken;
+  return fetch(`${API_BASE_URL}/items/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Authorization': `Bearer ${authToken}`
+    }
+  })
+    .then(res => normalizeResponseErrors(res))
+    .then(() => deleteItemSuccess(id))
+    .catch(err => dispatch(deleteItemError(err)))
 };
 
 export const buyItem = id => {
