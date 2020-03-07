@@ -7,6 +7,7 @@ import {
   UPDATE_ITEM_REQUEST,
   DELETE_ITEM_REQUEST,
   DELETE_ITEM_SUCCESS,
+  DELETE_ITEM_ERROR,
   GET_ITEMS,
   ADD_ITEM,
   EDIT_ITEM,
@@ -41,11 +42,13 @@ export default (state = initialState, action) => {
     case UPDATE_ITEM: 
       return {...state, items: state.items.map(item => item.id === action.item.id ? action.item : item), isEditing: false};
     case DELETE_ITEM_REQUEST:
-      return {...state, isLoading: !false}
+      return {...state, isLoading: !false};
     case DELETE_ITEM_SUCCESS:
     case DELETE_ITEM:
       //return {...state, items: state.items.filter(item => item.id !== action.item.id), isLoading: false}
-      return {items: state.items.filter(item => item.id !== action.item.id), isLoading: false};
+      return {items: state.items.filter(item => item.id !== action.id), isLoading: false};
+    case DELETE_ITEM_ERROR:
+      return {...state, error: action.error}
     case BUY_ITEM:
       return {items: state.items.map(item => {
         if (item.id === action.id) {
