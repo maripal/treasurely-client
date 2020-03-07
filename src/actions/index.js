@@ -153,7 +153,7 @@ export const updateItem = (id, values) => (dispatch, getState) => {
 
 export const deleteItemAction = () => {
   return {
-    type: DELETE_ITEM_REQUEST,
+    type: DELETE_ITEM_REQUEST
   };
 };
 
@@ -182,7 +182,7 @@ export const deleteItem = id => (dispatch, getState) => {
     }
   })
     .then(res => normalizeResponseErrors(res))
-    .then(() => deleteItemSuccess(id))
+    .then(res => dispatch(deleteItemSuccess(id)))
     .catch(err => dispatch(deleteItemError(err)))
 };
 
