@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { getItems } from '../actions/index';
 import requiresLogin from './Requires-Login';
 import AddToTotalForm from './AddToTotalForm';
 import ListItems from './ListItems';
@@ -7,7 +8,9 @@ import AddItemButton from './AddItemButton';
 import './HomePage.css';
 
 class HomePage extends React.Component {
-
+  componentDidMount() {
+    this.props.getItems()
+  }
 
   render() {
     //Changes total container color to notify when total is low
@@ -32,8 +35,9 @@ class HomePage extends React.Component {
 const mapStateToProps = state => {
   console.log(state);
   return {
-    total: state.total
+    total: state.total,
+    isLoggedIn: state.auth.authToken && state.auth.currentUser
   }
 }
 
-export default requiresLogin()(connect(mapStateToProps)(HomePage));
+export default requiresLogin()(connect(mapStateToProps, { getItems })(HomePage));
