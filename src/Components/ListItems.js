@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { deleteItem, minusTotal, buyItem, editItem, addToTotal} from '../actions';
+import { deleteItem, minusTotal, buyItem, editItem, addToTotal } from '../actions';
 import Item from './Item';
 import Modal from './Modal';
 import EditItem from './EditItem';
@@ -17,10 +17,13 @@ class ListItems extends React.Component {
   };
   
   handleDelete = id => {
-    this.props.deleteItem(id);
+    console.log(id)
+    this.props.deleteItem(id)
+    .then(() => {
+      alert('note was deleted!')
+    });
   };
 
-  //Should I keep this here, or make buy button its own component and add its functionality there?
   handleBuyClick = (amount, id) => {
     console.log(this.props.items)
     console.log(id);
@@ -39,6 +42,7 @@ class ListItems extends React.Component {
   }
 
   handleEditModal = id => {
+    console.log(id)
     this.props.editItem(id);
     console.log('edit button clicked' + id);
     this.setState({ showModal: !false, editItemId: id })
@@ -46,12 +50,9 @@ class ListItems extends React.Component {
 
   handleCloseModal = () => {
     this.setState({ showModal: false })
-    //Below changes the isEditing redux state back to false when user decides not to update item.
-    this.props.items[this.state.editItemId].isEditing = false;
   }
   
   renderList = () => {
-    console.log(this.props.items)
     return this.props.items.map(item => {
       console.log(item)
       return (
@@ -79,10 +80,11 @@ class ListItems extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state.items)
+  console.log(state.items);
   return {
     total: state.total,
     items: state.items.items,
+    jwt: state.auth.authToken
   };
 };
 
