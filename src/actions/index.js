@@ -5,6 +5,9 @@ export const ITEM_REQUEST = 'ITEM_REQUEST';
 export const ITEM_SUCCESS = 'ITEM_SUCCESS';
 export const ITEM_ERROR = 'ITEM_ERROR';
 export const ITEMS_LOADING = 'ITEMS_LOADING';
+export const GET_ITEMS_REQUEST = 'GET_ITEMS_REQUEST';
+export const GET_ITEMS_SUCCESS = 'GET_ITEMS_SUCCESS';
+export const GET_ITEMS_ERROR = 'GET_ITEMS_ERROR';
 export const UPDATE_ITEM_REQUEST = 'UPDATE_ITEM_REQUEST';
 export const UPDATE_SUCCESS = 'UPDATE_SUCCESS';
 export const DELETE_ITEM_REQUEST = 'DELETE_ITEM_REQUEST';
@@ -76,8 +79,28 @@ export const minusTotal = amount => {
   }
 };
 
+export const getItemsAction = () => {
+  return {
+    type: GET_ITEMS_REQUEST
+  };
+};
+
+export const getItemsSuccess = items => {
+  return {
+    type: GET_ITEMS_SUCCESS,
+    items
+  };
+};
+
+export const getItemsError = error => {
+  return {
+    type: GET_ITEMS_ERROR,
+    error
+  };
+};
+
 export const getItems = () => (dispatch, getState) => {
-  dispatch(itemsLoading());
+  dispatch(getItemsAction());
   const authToken = getState().auth.authToken;
 
   return fetch(`${API_BASE_URL}/items`, {
@@ -89,8 +112,8 @@ export const getItems = () => (dispatch, getState) => {
   })
   .then(res => normalizeResponseErrors(res))
   .then(res => res.json())
-  .then(items => dispatch(itemSuccess(items)))
-  .catch(err => dispatch(itemError(err)))
+  .then(items => dispatch(getItemsSuccess(items)))
+  .catch(err => dispatch(getItemsError(err)))
 }
 
 export const addItem = item => (dispatch, getState) => {
@@ -182,7 +205,7 @@ export const deleteItem = id => (dispatch, getState) => {
     }
   })
     .then(res => normalizeResponseErrors(res))
-    .then(res => dispatch(deleteItemSuccess(id)))
+    .then(() => dispatch(deleteItemSuccess(id)))
     .catch(err => dispatch(deleteItemError(err)))
 };
 
