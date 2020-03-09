@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 export function LandingPage(props) {
   
-  if (props.loggedIn) {
+  if (props.isLoggedIn) {
     return <Redirect to="/home" />
   }
   
@@ -20,7 +20,6 @@ export function LandingPage(props) {
         </h2>
 
         <LoginForm />
-        <Link to="/home" className="home-link">Home</Link>
         <Link to="/signup" className="signup-link">Sign Up!</Link>
       </header>
     </div>
@@ -28,7 +27,7 @@ export function LandingPage(props) {
 };
 
 const mapStateToProps = state => ({
-  loggedIn: state.auth.currentUser !== null
+  isLoggedIn: state.auth.currentUser !== null
 });
 
 export default connect(mapStateToProps)(LandingPage);
