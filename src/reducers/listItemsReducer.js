@@ -3,6 +3,9 @@ import {
   ITEM_SUCCESS,
   ITEM_ERROR,
   ITEMS_LOADING,
+  GET_ITEMS_REQUEST,
+  GET_ITEMS_SUCCESS,
+  GET_ITEMS_ERROR,
   UPDATE_SUCCESS,
   UPDATE_ITEM_REQUEST,
   DELETE_ITEM_REQUEST,
@@ -26,11 +29,18 @@ const initialState = {
 export default (state = initialState, action) => {
   switch(action.type) {
     case ITEM_REQUEST:
-      return {...state, isLoading: true};
+      return {...state, isLoading: !false};
     case ITEMS_LOADING:
-      return {...state, isLoading: true, error: null};
+      return {...state, isLoading: !false, error: null};
+    case ITEM_ERROR:
+      return {...state, error: action.error};
+    case GET_ITEMS_REQUEST:
+      return {...state, items: [], isLoading: !false};
+    case GET_ITEMS_SUCCESS:
     case GET_ITEMS:
-      return {...state, items: [action.items]}
+      return {...state, items: action.items};
+    case GET_ITEMS_ERROR:
+      return {...state, error: action.error}
     case ITEM_SUCCESS:
     case ADD_ITEM:
       return {...state, items: [...state.items, action.item], isLoading: false};
@@ -60,8 +70,6 @@ export default (state = initialState, action) => {
           return item;
         };
       })};
-    case ITEM_ERROR:
-      return {...state, error: action.error}
     default:
       return state;
   }
