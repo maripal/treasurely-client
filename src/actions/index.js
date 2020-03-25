@@ -13,7 +13,11 @@ export const UPDATE_SUCCESS = 'UPDATE_SUCCESS';
 export const DELETE_ITEM_REQUEST = 'DELETE_ITEM_REQUEST';
 export const DELETE_ITEM_SUCCESS = 'DELETE_ITEM_SUCCESS';
 export const DELETE_ITEM_ERROR = 'DELETE_ITEM_ERROR';
-export const ADD_TO_TOTAL = 'ADD_TO_TOTAL';
+export const GET_TOTAL = 'GET_TOTAL';
+export const UPDATE_TOTAL_REQUEST = 'UPDATE_TOTAL_REQUEST';
+export const UPDATE_TOTAL_SUCCESS = 'UPDATE_TOTAL_SUCCESS';
+export const UPDATE_TOTAL_ERROR = 'UPDATE_TOTAL_ERROR';
+export const INCREASE_TOTAL = 'INCREASE_TOTAL';
 export const MINUS_TOTAL = 'MINUS_TOTAL';
 export const GET_ITEMS = 'GET_ITEMS';
 export const ADD_ITEM = 'ADD_ITEM';
@@ -22,8 +26,6 @@ export const EDIT_ITEM = 'EDIT_ITEM';
 export const UPDATE_ITEM = 'UPDATE_ITEM';
 export const DELETE_ITEM = 'DELETE_ITEM';
 export const BUY_ITEM = 'BUY_ITEM';
-
-//let todoId = 0;
 
 export const itemRequest = () => {
   return {
@@ -63,13 +65,26 @@ export const udpateSuccess = item => {
     type: UPDATE_SUCCESS,
     item
   }
+};
+
+export const updateTotalAction = () => {
+  return {
+    type: UPDATE_TOTAL_REQUEST
+  }
 }
 
-export const addToTotal = amount => {
+export const updateTotalSuccess = amount => {
   return {
-    type: ADD_TO_TOTAL,
+    type: UPDATE_TOTAL_SUCCESS,
     amount
-  }
+  };
+};
+
+export const updateTotalError = error => {
+  return {
+    type: UPDATE_TOTAL_ERROR,
+    error
+  };
 };
 
 export const minusTotal = amount => {
@@ -77,6 +92,25 @@ export const minusTotal = amount => {
     type: MINUS_TOTAL,
     amount
   }
+};
+
+export const increaseTotal = amount => (dispatch, getState) => {
+  dispatch(updateTotalAction());
+  console.log(amount);
+  const authToken = getState().auth.authToken;
+
+  return fetch(`${API_BASE_URL}/users/total`, {
+    method: 'PUT',
+    headers: {
+      'content-type': 'application/json',
+      'Authorization': `Bearer ${authToken}`
+    },
+    body: JSON.stringify(amount)
+  })
+    .then(res => normalizeResponseErrors(res))
+    .then(res => res.json())
+    .then(amount => dispatch(updateTotalSuccess(amount)))
+    .catch(err => dispatch(updateTotalError(err)))
 };
 
 export const getItemsAction = () => {
