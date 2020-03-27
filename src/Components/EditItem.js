@@ -4,11 +4,11 @@ import { reset } from 'redux-form';
 import { updateItem } from '../actions';
 import EditItemForm from './EditItemForm';
 
-//Got this working!!! :D Now, figure out if I need the renderEditItem method code or can just render the EditItemForm itself instead.
 class EditItem extends React.Component {
 
   onSubmit = (formValues, dispatch) => {
     console.log(formValues);
+    console.log(this.props.id, formValues)
     this.props.updateItem(this.props.id, formValues);
     dispatch(reset('editItem'));
   }
@@ -22,8 +22,9 @@ class EditItem extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   console.log(state);
+  console.log(ownProps)
   return {
     items: state.items.items
   }

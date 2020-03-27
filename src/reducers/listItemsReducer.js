@@ -38,7 +38,7 @@ export default (state = initialState, action) => {
       return {...state, items: [], isLoading: !false};
     case GET_ITEMS_SUCCESS:
     case GET_ITEMS:
-      return {...state, items: action.items};
+      return {...state, items: action.items, isLoading: false};
     case GET_ITEMS_ERROR:
       return {...state, error: action.error}
     case ITEM_SUCCESS:
