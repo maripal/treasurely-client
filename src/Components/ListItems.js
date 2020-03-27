@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { deleteItem, minusTotal, buyItem, editItem, addToTotal } from '../actions';
+import { deleteItem, minusTotal, buyItem, editItem, increaseTotal } from '../actions';
 import Item from './Item';
 import Modal from './Modal';
 import EditItem from './EditItem';
@@ -17,11 +17,7 @@ class ListItems extends React.Component {
   };
   
   handleDelete = id => {
-    console.log(id)
-    this.props.deleteItem(id)
-    .then(() => {
-      alert('note was deleted!')
-    });
+    this.props.deleteItem(id);
   };
 
   handleBuyClick = (amount, id) => {
@@ -36,7 +32,7 @@ class ListItems extends React.Component {
       this.props.minusTotal(amount)
     } else {
       // If buy click was a mistake, this changes state back when clicked again
-      this.props.addToTotal(amount);
+      this.props.increaseTotal(amount);
       item.purchased = false
     }
   }
@@ -88,4 +84,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { deleteItem, minusTotal, buyItem, editItem, addToTotal })(ListItems);
+export default connect(mapStateToProps, { deleteItem, minusTotal, buyItem, editItem, increaseTotal })(ListItems);
