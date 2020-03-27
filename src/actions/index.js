@@ -96,7 +96,6 @@ export const minusTotal = amount => {
 
 export const increaseTotal = amount => (dispatch, getState) => {
   dispatch(updateTotalAction());
-  console.log(amount);
   const authToken = getState().auth.authToken;
 
   return fetch(`${API_BASE_URL}/users/total`, {
