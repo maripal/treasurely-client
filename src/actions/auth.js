@@ -53,7 +53,6 @@ const storeAuthInfo = (authToken, dispatch) => {
 
 export const login = (username, password) => (dispatch, getState) => {
   dispatch(authRequest());
-  console.log(`this is login state: ${JSON.stringify(getState())}`)
   return (
     fetch(`${API_BASE_URL}/auth/login`, {
       method: 'POST',
