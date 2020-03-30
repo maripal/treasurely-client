@@ -10,7 +10,6 @@ import './HomePage.css';
 class HomePage extends React.Component {
   componentDidMount() {
     this.props.getItems()
-    //this.props.getTotal()
   }
 
   render() {
@@ -23,7 +22,7 @@ class HomePage extends React.Component {
     return (
       <div>
         <div className={`total-container ${containerColor}`}>
-          {/* <h1 className={`total ${totalColor}`}>${this.props.total.toFixed(2)}</h1> */}
+          <h1 className={`total ${totalColor}`}>${this.props.total.toFixed(2)}</h1>
           <AddToTotalForm />
         </div>
           <AddItemButton />
@@ -34,10 +33,9 @@ class HomePage extends React.Component {
 };
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
-    total: state.total,
-    //total: state.auth.currentUser.totalSavings,
+    //total: state.total.total,
+    total: state.auth.currentUser.totalSavings,
     isLoggedIn: state.auth.authToken && state.auth.currentUser
   }
 }
