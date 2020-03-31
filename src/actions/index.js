@@ -13,7 +13,10 @@ export const UPDATE_SUCCESS = 'UPDATE_SUCCESS';
 export const DELETE_ITEM_REQUEST = 'DELETE_ITEM_REQUEST';
 export const DELETE_ITEM_SUCCESS = 'DELETE_ITEM_SUCCESS';
 export const DELETE_ITEM_ERROR = 'DELETE_ITEM_ERROR';
+export const GET_TOTAL_REQUEST = 'GET_TOTAL_REQUEST';
+export const GET_TOTAL_SUCCESS = 'GET_TOTAL_SUCCESS';
 export const GET_TOTAL = 'GET_TOTAL';
+export const GET_TOTAL_ERROR = 'GET_TOTAL_ERROR';
 export const UPDATE_TOTAL_REQUEST = 'UPDATE_TOTAL_REQUEST';
 export const UPDATE_TOTAL_SUCCESS = 'UPDATE_TOTAL_SUCCESS';
 export const UPDATE_TOTAL_ERROR = 'UPDATE_TOTAL_ERROR';
@@ -92,6 +95,43 @@ export const minusTotal = amount => {
     type: MINUS_TOTAL,
     amount
   }
+};
+
+export const getTotalAction = () => {
+  return {
+    type: GET_TOTAL_REQUEST
+  };
+};
+
+export const getTotalSuccess = amount => {
+  return {
+    type: GET_TOTAL_SUCCESS,
+    amount
+  };
+};
+
+export const getTotalError = error => {
+  return {
+    type: GET_TOTAL_ERROR,
+    error
+  };
+};
+
+export const getTotal = () => (dispatch, getState) => {
+  dispatch(getTotalAction());
+  const authToken = getState().auth.authToken;
+
+  return fetch(`${API_BASE_URL}/users/total`, {
+    method: 'GET',
+    headers: {
+      'content-type': 'application/json',
+      'Authorization': `Bearer ${authToken}`
+    }
+  })
+    .then(res => normalizeResponseErrors(res))
+    .then(res => res.json())
+    .then(({ totalSavings }) => dispatch(getTotalSuccess(totalSavings)))
+    .catch(err => dispatch(getTotalError(err)))
 };
 
 export const increaseTotal = amount => (dispatch, getState) => {

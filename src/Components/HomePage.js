@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getItems } from '../actions/index';
+import { getItems, getTotal } from '../actions/index';
 import requiresLogin from './Requires-Login';
 import AddToTotalForm from './AddToTotalForm';
 import ListItems from './ListItems';
@@ -9,7 +9,8 @@ import './HomePage.css';
 
 class HomePage extends React.Component {
   componentDidMount() {
-    this.props.getItems()
+      this.props.getTotal();
+      this.props.getItems();
   }
 
   render() {
@@ -33,11 +34,12 @@ class HomePage extends React.Component {
 };
 
 const mapStateToProps = state => {
+  console.log(state)
   return {
-    //total: state.total.total,
+    // total: state.total.total.totalSavings,
     total: state.auth.currentUser.totalSavings,
     isLoggedIn: state.auth.authToken && state.auth.currentUser
   }
 }
 
-export default requiresLogin()(connect(mapStateToProps, { getItems })(HomePage));
+export default requiresLogin()(connect(mapStateToProps, { getItems, getTotal })(HomePage));
