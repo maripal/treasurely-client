@@ -13,6 +13,10 @@ class HomePage extends React.Component {
       this.props.getItems();
   }
 
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (prevState.total !==  )
+  // }
+
   render() {
     //Changes total container color to notify when total is low
     let containerColor = this.props.total  <= 0 ? 'empty-total-notification' : this.props.total <= 50 ? 'low-total-notification' : '';
@@ -23,7 +27,7 @@ class HomePage extends React.Component {
     return (
       <div>
         <div className={`total-container ${containerColor}`}>
-          <h1 className={`total ${totalColor}`}>${this.props.total.toFixed(2)}</h1>
+          <h1 className={`total ${totalColor}`}>${this.props.total === null ? 'Loading...' : this.props.total.toFixed(2)}</h1>
           <AddToTotalForm />
         </div>
           <AddItemButton />
@@ -36,8 +40,8 @@ class HomePage extends React.Component {
 const mapStateToProps = state => {
   console.log(state)
   return {
-    // total: state.total.total.totalSavings,
-    total: state.auth.currentUser.totalSavings,
+    total: state.total.total,
+    // total: state.auth.currentUser.totalSavings,
     isLoggedIn: state.auth.authToken && state.auth.currentUser
   }
 }
