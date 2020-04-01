@@ -148,7 +148,7 @@ export const increaseTotal = amount => (dispatch, getState) => {
   })
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
-    .then(amount => dispatch(updateTotalSuccess(amount)))
+    .then(({ totalSavings }) => dispatch(updateTotalSuccess(totalSavings)))
     .catch(err => dispatch(updateTotalError(err)))
 };
 
