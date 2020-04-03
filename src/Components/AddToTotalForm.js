@@ -1,15 +1,21 @@
 import React from 'react';
 import { reduxForm, Field, focus, reset } from 'redux-form';
 import { connect } from 'react-redux';
-import { increaseTotal, minusTotal } from '../actions';
+import { getTotal, increaseTotal, minusTotal, getTotalAction } from '../actions';
 import Input from './Input';
 import './AddToTotalForm.css';
 
 class AddToTotalForm extends React.Component {
 
-  onSubmit = value => {
-    console.log(value);
-    return this.props.dispatch(increaseTotal(value));
+  increaseTotal = value => {
+    const { totalSavings } = value; 
+    const updatedTotal = this.props.total + totalSavings;
+
+    return this.props.dispatch(increaseTotal({totalSavings: updatedTotal}));
+  }
+
+  decreaseTotal = value => {
+    // Write actioon in actions file and dispatch action here
   }
 
   render() {
@@ -31,6 +37,8 @@ class AddToTotalForm extends React.Component {
       );
     }
 
+    const { handleSubmit } = this.props;
+
     return (
       //  <div>
       //   <form className="total-form">
@@ -50,7 +58,8 @@ class AddToTotalForm extends React.Component {
       // </div> 
 
       <form
-       onSubmit={this.props.handleSubmit(value => this.onSubmit(value))}
+      //  onSubmit={this.props.handleSubmit(value => this.onSubmit(value))}
+       onSubmit={handleSubmit}
        className="total-form"
       >
         {successMessage}
@@ -67,6 +76,7 @@ class AddToTotalForm extends React.Component {
           className="add-button" 
           type="submit"
           disabled={this.props.pristine || this.props.submitting}
+          onClick={handleSubmit(value => this.increaseTotal({ ...value }))}
         >
           +
         </button>
@@ -81,6 +91,14 @@ class AddToTotalForm extends React.Component {
     );
   }
 };
+
+const mapStateToProps = state => {
+  return {
+    total: state.total.total
+  };
+};
+
+AddToTotalForm = connect(mapStateToProps)(AddToTotalForm);
 
 export default reduxForm ({
   form: 'updateTotal',
