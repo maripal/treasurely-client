@@ -3,15 +3,18 @@ import {
   GET_TOTAL_SUCCESS,
   GET_TOTAL,
   GET_TOTAL_ERROR, 
-  UPDATE_TOTAL_SUCCESS, 
+  INCREASE_TOTAL_REQUEST, 
+  INCREASE_TOTAL_SUCCESS, 
   INCREASE_TOTAL, 
-  UPDATE_TOTAL_REQUEST, 
-  UPDATE_TOTAL_ERROR,
-  MINUS_TOTAL, 
+  INCREASE_TOTAL_ERROR,
+  DECREASE_TOTAL_REQUEST,
+  DECREASE_TOTAL_SUCCESS,
+  DECREASE_TOTAL, 
+  DECREASE_TOTAL_ERROR
 } from '../actions/index';
 
 const initialState = {
-  total: null,
+  total: 0,
   isLoading: false,
   error: null
 };
@@ -25,17 +28,21 @@ export default (state = initialState, action) => {
       return {...state, total: action.amount, isLoading: false};
     case GET_TOTAL_ERROR:
       return {...state, isLoading: false, error: action.error};
-    case UPDATE_TOTAL_REQUEST: 
+    case INCREASE_TOTAL_REQUEST: 
       console.log(state)
       return {...state, isLoading: !false};
-    case UPDATE_TOTAL_SUCCESS:
+    case INCREASE_TOTAL_SUCCESS:
     case INCREASE_TOTAL:
-      console.log(state)
       return {...state, total: action.amount, isLoading: false};
-    case UPDATE_TOTAL_ERROR: 
-      return {...state, isLoading: false, error: action.error}
-/*     case MINUS_TOTAL:
-      return state - action.amount; */
+    case INCREASE_TOTAL_ERROR: 
+      return {...state, isLoading: false, error: action.error};
+    case DECREASE_TOTAL_REQUEST:
+      return {...state, isLoading: !false};
+    case DECREASE_TOTAL_SUCCESS:
+    case DECREASE_TOTAL:
+      return {...state, total: action.amount, isLoading: false};
+    case DECREASE_TOTAL_ERROR:
+      return {...state, isLoading: false, error: action.error};
     default:
       return state;
   }
