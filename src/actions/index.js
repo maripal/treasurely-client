@@ -30,65 +30,7 @@ export const UPDATE_ITEM = 'UPDATE_ITEM';
 export const DELETE_ITEM = 'DELETE_ITEM';
 export const BUY_ITEM = 'BUY_ITEM';
 
-export const itemRequest = () => {
-  return {
-    type: ITEM_REQUEST
-  };
-};
 
-export const itemSuccess = item => {
-  return {
-    type: ITEM_SUCCESS,
-    item
-  };
-};
-
-export const itemError = error => {
-  return {
-    type: ITEM_ERROR,
-    error
-  };
-};
-
-export const itemsLoading = () => {
-  return {
-    type: ITEMS_LOADING
-  };
-};
-
-export const editItem = id => {
-  return {
-    type: EDIT_ITEM,
-    id
-  }
-};
-
-export const udpateSuccess = item => {
-  return{
-    type: UPDATE_SUCCESS,
-    item
-  }
-};
-
-export const updateTotalAction = () => {
-  return {
-    type: UPDATE_TOTAL_REQUEST
-  }
-}
-
-export const updateTotalSuccess = amount => {
-  return {
-    type: UPDATE_TOTAL_SUCCESS,
-    amount
-  };
-};
-
-export const updateTotalError = error => {
-  return {
-    type: UPDATE_TOTAL_ERROR,
-    error
-  };
-};
 
 export const minusTotal = amount => {
   return {
@@ -132,6 +74,26 @@ export const getTotal = () => (dispatch, getState) => {
     .then(res => res.json())
     .then(({ totalSavings }) => dispatch(getTotalSuccess(totalSavings)))
     .catch(err => dispatch(getTotalError(err)))
+};
+
+export const updateTotalAction = () => {
+  return {
+    type: UPDATE_TOTAL_REQUEST
+  }
+}
+
+export const updateTotalSuccess = amount => {
+  return {
+    type: UPDATE_TOTAL_SUCCESS,
+    amount
+  };
+};
+
+export const updateTotalError = error => {
+  return {
+    type: UPDATE_TOTAL_ERROR,
+    error
+  };
 };
 
 export const increaseTotal = amount => (dispatch, getState) => {
@@ -189,6 +151,32 @@ export const getItems = () => (dispatch, getState) => {
   .catch(err => dispatch(getItemsError(err)))
 }
 
+export const itemRequest = () => {
+  return {
+    type: ITEM_REQUEST
+  };
+};
+
+export const itemSuccess = item => {
+  return {
+    type: ITEM_SUCCESS,
+    item
+  };
+};
+
+export const itemError = error => {
+  return {
+    type: ITEM_ERROR,
+    error
+  };
+};
+
+export const itemsLoading = () => {
+  return {
+    type: ITEMS_LOADING
+  };
+};
+
 export const addItem = item => (dispatch, getState) => {
   dispatch(itemRequest());
   const authToken = getState().auth.authToken;
@@ -220,19 +208,33 @@ export const getItem = id => (dispatch, getState) => {
     .then(res => res.json())
     .then(item => dispatch(itemSuccess(item)))
     .catch(err => dispatch(itemError(err)))
-}
+};
 
 export const updateItemAction = () => {
   return {
     type: UPDATE_ITEM_REQUEST,
+  };
+};
+
+export const editItem = id => {
+  return {
+    type: EDIT_ITEM,
+    id
   }
-}
+};
+
+export const udpateSuccess = item => {
+  return{
+    type: UPDATE_SUCCESS,
+    item
+  }
+};
 
 export const updateItem = (id, values) => (dispatch, getState) => {
   const { name, price } = values;
   dispatch(updateItemAction())
   const authToken = getState().auth.authToken;
-  console.log(`update data: ${JSON.stringify(values)}`)
+  
   return fetch(`${API_BASE_URL}/items/update/${id}`, {
     method: 'PUT',
     headers: {
