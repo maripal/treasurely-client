@@ -17,11 +17,14 @@ export const GET_TOTAL_REQUEST = 'GET_TOTAL_REQUEST';
 export const GET_TOTAL_SUCCESS = 'GET_TOTAL_SUCCESS';
 export const GET_TOTAL = 'GET_TOTAL';
 export const GET_TOTAL_ERROR = 'GET_TOTAL_ERROR';
-export const UPDATE_TOTAL_REQUEST = 'UPDATE_TOTAL_REQUEST';
-export const UPDATE_TOTAL_SUCCESS = 'UPDATE_TOTAL_SUCCESS';
-export const UPDATE_TOTAL_ERROR = 'UPDATE_TOTAL_ERROR';
+export const INCREASE_TOTAL_REQUEST = 'INCREASE_TOTAL_REQUEST';
+export const INCREASE_TOTAL_SUCCESS = 'INCREASE_TOTAL_SUCCESS';
+export const INCREASE_TOTAL_ERROR = 'INCREASE_TOTAL_ERROR';
 export const INCREASE_TOTAL = 'INCREASE_TOTAL';
-export const MINUS_TOTAL = 'MINUS_TOTAL';
+export const DECREASE_TOTAL_REQUEST = 'DECREASE_TOTAL_REQUEST';
+export const DECREASE_TOTAL_SUCCESS = 'DECREASE_TOTAL_SUCCESS';
+export const DECREASE_TOTAL_ERROR = 'DECREASE_TOTAL_ERROR';
+export const DECREASE_TOTAL = 'DECREASE_TOTAL';
 export const GET_ITEMS = 'GET_ITEMS';
 export const ADD_ITEM = 'ADD_ITEM';
 export const GET_ITEM = 'GET_ITEM';
@@ -31,13 +34,6 @@ export const DELETE_ITEM = 'DELETE_ITEM';
 export const BUY_ITEM = 'BUY_ITEM';
 
 
-
-export const minusTotal = amount => {
-  return {
-    type: MINUS_TOTAL,
-    amount
-  }
-};
 
 export const getTotalAction = () => {
   return {
@@ -76,28 +72,28 @@ export const getTotal = () => (dispatch, getState) => {
     .catch(err => dispatch(getTotalError(err)))
 };
 
-export const updateTotalAction = () => {
+export const increaseTotalAction = () => {
   return {
-    type: UPDATE_TOTAL_REQUEST
+    type: INCREASE_TOTAL_REQUEST
   }
 }
 
-export const updateTotalSuccess = amount => {
+export const increaseTotalSuccess = amount => {
   return {
-    type: UPDATE_TOTAL_SUCCESS,
+    type: INCREASE_TOTAL_SUCCESS,
     amount
   };
 };
 
-export const updateTotalError = error => {
+export const increaseTotalError = error => {
   return {
-    type: UPDATE_TOTAL_ERROR,
+    type: INCREASE_TOTAL_ERROR,
     error
   };
 };
 
 export const increaseTotal = amount => (dispatch, getState) => {
-  dispatch(updateTotalAction());
+  dispatch(increaseTotalAction());
   const authToken = getState().auth.authToken;
 
   return fetch(`${API_BASE_URL}/users/total`, {
@@ -110,8 +106,46 @@ export const increaseTotal = amount => (dispatch, getState) => {
   })
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
-    .then(({ totalSavings }) => dispatch(updateTotalSuccess(totalSavings)))
-    .catch(err => dispatch(updateTotalError(err)))
+    .then(({ totalSavings }) => dispatch(increaseTotalSuccess(totalSavings)))
+    .catch(err => dispatch(increaseTotalError(err)))
+};
+
+export const decreaseTotalAction = () => {
+  return {
+    type: DECREASE_TOTAL_REQUEST
+  };
+};
+
+export const decreaseTotalSuccess = amount => {
+  return {
+    type: DECREASE_TOTAL_SUCCESS,
+    amount
+  };
+};
+
+export const decreaseTotalError = error => {
+  return {
+    type: DECREASE_TOTAL_ERROR,
+    error
+  };
+};
+
+export const decreaseTotal = amount => (dispatch, getState) => {
+  dispatch(decreaseTotalAction());
+  const authToken = getState().auth.authToken;
+
+  return fetch(`${API_BASE_URL}/users/total`, {
+    method: 'PUT',
+    headers: {
+      'content-type': 'application/json',
+      'Authorization': `Bearer ${authToken}`
+    },
+    body: JSON.stringify(amount)
+  })
+    .then(res => normalizeResponseErrors(res))
+    .then(res => res.json())
+    .then(({ totalSavings }) => dispatch(decreaseTotalSuccess(totalSavings)))
+    .catch(err => dispatch(decreaseTotalError(err)))
 };
 
 export const getItemsAction = () => {
@@ -234,7 +268,7 @@ export const updateItem = (id, values) => (dispatch, getState) => {
   const { name, price } = values;
   dispatch(updateItemAction())
   const authToken = getState().auth.authToken;
-  
+
   return fetch(`${API_BASE_URL}/items/update/${id}`, {
     method: 'PUT',
     headers: {
