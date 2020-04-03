@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { deleteItem, minusTotal, buyItem, editItem, increaseTotal } from '../actions';
+import { deleteItem, decreaseTotal, buyItem, editItem, increaseTotal } from '../actions';
 import Item from './Item';
 import Modal from './Modal';
 import EditItem from './EditItem';
@@ -21,18 +21,17 @@ class ListItems extends React.Component {
   };
 
   handleBuyClick = (amount, id) => {
-    console.log(this.props.items)
-    console.log(id);
-  
     // Find item that buy was clicked to dispatch actions
     const item = this.props.items.find(item => item.id === id);
     
     if (!item.purchased) {
+      const updatedTotal = this.props.total - amount;
       this.props.buyItem(id);
-      this.props.minusTotal(amount)
+      this.props.decreaseTotal({totalSavings: updatedTotal})
     } else {
       // If buy click was a mistake, this changes state back when clicked again
-      this.props.increaseTotal(amount);
+      const updatedTotal = this.props.total + amount;
+      this.props.increaseTotal({totalSavings: updatedTotal});
       item.purchased = false
     }
   }
@@ -78,10 +77,10 @@ class ListItems extends React.Component {
 const mapStateToProps = state => {
   console.log(state.items);
   return {
-    total: state.total,
+    total: state.total.total,
     items: state.items.items,
     jwt: state.auth.authToken
   };
 };
 
-export default connect(mapStateToProps, { deleteItem, minusTotal, buyItem, editItem, increaseTotal })(ListItems);
+export default connect(mapStateToProps, { deleteItem, decreaseTotal, buyItem, editItem, increaseTotal })(ListItems);
