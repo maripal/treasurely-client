@@ -9,7 +9,7 @@ import SignUpPage from './SignUpPage';
 import HomePage from './HomePage';
 import './App.css';
 
-class App extends React.Component {
+export class App extends React.Component {
   componentDidUpdate (prevProps) {
     if(!prevProps.loggedIn && this.props.loggedIn) {
       this.startPeriodicRefresh();
