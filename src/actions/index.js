@@ -257,7 +257,7 @@ export const editItem = id => {
   }
 };
 
-export const udpateSuccess = item => {
+export const updateSuccess = item => {
   return{
     type: UPDATE_SUCCESS,
     item
@@ -279,7 +279,7 @@ export const updateItem = (id, values) => (dispatch, getState) => {
   })
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
-    .then(item => dispatch(udpateSuccess(item)))
+    .then(item => dispatch(updateSuccess(item)))
     .catch(err => dispatch(itemError(err)))
 };
 

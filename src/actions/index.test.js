@@ -10,7 +10,7 @@ import {
   ITEM_SUCCESS,
   itemSuccess,
   UPDATE_SUCCESS,
-  udpateSuccess,
+  updateSuccess,
   DELETE_ITEM_SUCCESS,
   deleteItemSuccess,
   BUY_ITEM,
@@ -66,7 +66,7 @@ describe('addItem', () => {
 describe('updateItem', () => {
   it('should return the action', () => {
     const item = { id: 0, name: 'bike', price: 200 };
-    const action = udpateSuccess(item);
+    const action = updateSuccess(item);
     expect(action.type).toEqual(UPDATE_SUCCESS);
     expect(action.item).toEqual(item);
   });
