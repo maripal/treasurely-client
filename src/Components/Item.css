@@ -1,5 +1,7 @@
 .item-details {
-  width: 25%;
+  width: 50%;
+  padding: 10px 25px;
+  font-size: 15px;
 }
 
 .item-name {
@@ -10,14 +12,22 @@
 .price {
   letter-spacing: 1px;
   margin-right: 5px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.buttons-container {
+  width: 50%;
+  display: flex;
+  align-self: stretch;
 }
 
 .item-action-button {
   background-color: white;
-  border: 1px solid gray;
+  border: none;
   padding: 10px 5px;
-  width: 18%;
+  width: 33.3%;
   font-size: 14px;
+  font-family: "Karla", sans-serif;
 }
 
 .buy-button {
@@ -26,6 +36,8 @@
 
 .edit-button {
   background-color: white;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
 }
 
 .delete-button {
