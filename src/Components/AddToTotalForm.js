@@ -1,7 +1,7 @@
 import React from 'react';
 import { reduxForm, Field, focus, reset } from 'redux-form';
 import { connect } from 'react-redux';
-import { getTotal, increaseTotal, minusTotal, getTotalAction } from '../actions';
+import { increaseTotal, decreaseTotal } from '../actions';
 import Input from './Input';
 import './AddToTotalForm.css';
 
@@ -16,6 +16,10 @@ class AddToTotalForm extends React.Component {
 
   decreaseTotal = value => {
     // Write actioon in actions file and dispatch action here
+    const { totalSavings } = value;
+    const updatedTotal = this.props.total - totalSavings;
+
+    return this.props.dispatch(decreaseTotal({totalSavings: updatedTotal}))
   }
 
   render() {
@@ -56,38 +60,39 @@ class AddToTotalForm extends React.Component {
       //     <button className="minus-button" type="submit" onClick={this.subtractMoneySubmit}>-</button>
       //   </form>
       // </div> 
-
-      <form
-      //  onSubmit={this.props.handleSubmit(value => this.onSubmit(value))}
-       onSubmit={handleSubmit}
-       className="total-form"
-      >
-        {successMessage}
-        {errorMessage}
-        <Field 
-          name="totalSavings"
-          type="number"
-          component={Input}
-          label="Amount"
-          parse={val => Number(val)}
-          required
-        />
-        <button 
-          className="add-button" 
-          type="submit"
-          disabled={this.props.pristine || this.props.submitting}
-          onClick={handleSubmit(value => this.increaseTotal({ ...value }))}
+      <fieldset className="total-form-container">
+        <form
+        onSubmit={handleSubmit}
+        className="total-form"
         >
-          +
-        </button>
-        <button
-          className="minus-button"
-          type="submit"
-          disabled={this.props.pristine || this.props.submitting}
-        >
-          -
-        </button>
-      </form>
+          {successMessage}
+          {errorMessage}
+          <Field 
+            name="totalSavings"
+            type="number"
+            component={Input}
+            label="Amount"
+            parse={val => Number(val)}
+            required
+          />
+          <button 
+            className="add-button" 
+            type="submit"
+            disabled={this.props.pristine || this.props.submitting}
+            onClick={handleSubmit(value => this.increaseTotal({ ...value }))}
+          >
+            +
+          </button>
+          <button
+            className="minus-button"
+            type="submit"
+            disabled={this.props.pristine || this.props.submitting}
+            onClick={handleSubmit(value => this.decreaseTotal({ ...value }))}
+          >
+            -
+          </button>
+        </form>
+      </fieldset>
     );
   }
 };
@@ -106,5 +111,3 @@ export default reduxForm ({
     dispatch(focus('updateTotal', Object.keys(errors)[0])),
   onSubmitSuccess: (result, dispatch) => dispatch(reset('updateTotal'))
 })(AddToTotalForm);
-
-//export default connect(null, { increaseTotal, minusTotal })(AddToTotalForm);

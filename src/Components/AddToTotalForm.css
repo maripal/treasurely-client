@@ -1,3 +1,7 @@
+.total-form-container {
+  border: none;
+}
+
 .total-form {
   display: flex;
   flex-direction: row;
@@ -6,14 +10,8 @@
   margin-top: 20px;
 }
 
-.total-input {
-  flex: 0 0 100%;
-  margin-bottom: 20px;
-  padding: 10px;
-}
-
-.add-button, .minus-button {
-  color: #fff;
+.add-button,
+.minus-button {
   width: 70px;
   border-radius: 50%;
   padding: 20px 15px;
@@ -22,12 +20,14 @@
 }
 
 .add-button {
-  background-color: #68c49f;
+  background-color: #fff;
   border: 1px solid #68c49f;
+  color: #68c49f;
   margin-right: 20px;
 }
 
 .minus-button {
-  background-color: #c46868;
+  background-color: #fff;
   border: 1px solid #c46868;
+  color: #c46868;
 }
