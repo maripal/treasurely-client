@@ -1,3 +1,7 @@
+.total-section {
+  margin-bottom: 25px;
+}
+
 .total-container {
   background-color: #1d7c54;
   height: auto;
@@ -11,8 +15,10 @@
 .total {
   text-align: center;
   font-size: 3em;
+  margin-bottom: 20px;
   margin-top: 65px;
-  color: white;
+  color: #fff;
+  font-weight: 100;
 }
 
 .low-total {
@@ -25,4 +31,28 @@
 
 .empty-total-notification {
   background-color: hsla(1, 77%, 55%, 0.95);
+}
+
+.list-items-section {
+  background-color: #fff;
+  border-radius: 35px 35px 0 0;
+  margin-bottom: 25px;
+  padding-bottom: 30px;
+}
+
+.add-item-btn-container {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+}
+
+.add-item-btn {
+  background-color: #0a514f;
+  border: 1px solid #0a514f;
+  border-radius: 50%;
+  color: #fff;
+  padding: 10px;
+  width: 75px;
+  height: 75px;
+  box-shadow: 0 3px 10px 0 #000;
 }
