@@ -1,6 +1,7 @@
 import React from 'react';
+import './Input.css'
 
-class Input extends React.Component {
+export class Input extends React.Component {
   render() {
     const Element = this.props.element || 'input';
 
@@ -14,13 +15,14 @@ class Input extends React.Component {
     warning = <div className="form-warning">{this.props.meta.warning}</div>
     }
     return (
-      <div>
+      <div className="input-container">
         <label htmlFor={this.props.input.name}>
           {this.props.label}
           {error}
           {warning}
         </label>
-        <Element 
+        <Element
+          className="input" 
           {...this.props.input}
           id={this.props.input.name}
           type={this.props.type}
