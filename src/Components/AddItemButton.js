@@ -2,7 +2,7 @@ import React from 'react';
 import AddItemContainer from './AddItemContainer';
 import Modal from './Modal';
 
-class AddItemButton extends React.Component {
+export class AddItemButton extends React.Component {
    constructor(props) {
     super(props);
     this.state = {
@@ -26,20 +26,20 @@ class AddItemButton extends React.Component {
       </Modal>
     ) : ''; 
 
-    let buttonStyle = {
-      backgroundColor: '#071419',
-      border: '1px solid #071419',
-      borderRadius: '50px',
-      color: 'white',
-      padding: '15px 25px',
-      width: '100%',
-      marginTop: '50px',
-      marginBottom: '30px'
-    };
+    // let buttonStyle = {
+    //   backgroundColor: '#071419',
+    //   border: '1px solid #071419',
+    //   borderRadius: '50px',
+    //   color: 'white',
+    //   padding: '15px 25px',
+    //   width: '100%',
+    //   marginTop: '50px',
+    //   marginBottom: '30px'
+    // };
 
     return (
-      <div>
-        <button style={buttonStyle} onClick={this.handleShowClick}>Add Item to wishlist</button>
+      <div className="add-item-btn-container">
+        <button className="add-item-btn" onClick={this.handleShowClick}>Add Item</button>
         {renderModal}
       </div>
     );
