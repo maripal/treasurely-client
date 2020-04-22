@@ -2,29 +2,6 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import './AddItemForm.css';
 
-/* class AddItemForm extends React.Component {
-
-  onSubmit = formValues => {
-    //console.log(formValues)
-    this.props.onSubmit(formValues)
-  }
-
-  render() {
-    const { handleSubmit } = this.props;
-    return (
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Item name</label>
-          <Field name="itemName" component="input" type="text" placeholder="Item name" />
-        </div>
-        <button>Submit</button>
-      </form>
-    );
-  };
-} */
-
-//BUG to fix here: When I enter price on first try it returns an error about valid value(about decimals). BUT 
-//if I click out of the input & then click back it works & form successfully submits. (???)
 
 const validate = formValues => {
   const errors = {};
@@ -64,8 +41,7 @@ const AddItemForm = props => {
 
   const { handleSubmit } = props;
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="form-container">
+    <form className="add-item-form" onSubmit={handleSubmit}>
         <Field
           name="name"
           component={renderField}
@@ -79,8 +55,7 @@ const AddItemForm = props => {
           label="Price"
           parse={val => Number(val)}
         />
-        <button className="item-button" type="submit">Submit</button>
-      </div>
+        <button className="submit-item-button" type="submit">Submit</button>
     </form>
   );
 };
