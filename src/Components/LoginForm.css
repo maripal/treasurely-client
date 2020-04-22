@@ -1,6 +1,21 @@
 .login-form {
-  width: 300px;
-  border: 1px solid green;
-  padding: 30px;
-  margin: 20px;
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  margin-top: 20px;
+}
+
+.login-form label {
+}
+
+.login-btn {
+  background-color: #1c7c54;
+  border: 1px solid #1c7c54;
+  color: #fff;
+  width: 50%;
+  padding: 15px 10px;
+  border-radius: 10px;
+  font-size: 16px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
