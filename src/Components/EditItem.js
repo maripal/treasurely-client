@@ -4,7 +4,7 @@ import { reset } from 'redux-form';
 import { updateItem } from '../actions';
 import EditItemForm from './EditItemForm';
 
-class EditItem extends React.Component {
+export class EditItem extends React.Component {
 
   onSubmit = (formValues, dispatch) => {
     console.log(formValues);
@@ -15,7 +15,7 @@ class EditItem extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="edit-form-container">
        <EditItemForm key={this.props.id} onSubmit={this.onSubmit} />
       </div>
     )

@@ -41,8 +41,7 @@ const EditItemForm = props => {
   const { handleSubmit } = props;
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="form-container">
+    <form className="edit-item-form" onSubmit={handleSubmit}>
         <Field 
           name="name"
           component={renderField}
@@ -57,7 +56,6 @@ const EditItemForm = props => {
           parse={val => Number(val)}
         />
         <button className="submit-button" type="submit">Update</button>
-      </div>
     </form>
   );
 };

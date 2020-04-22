@@ -1,4 +1,4 @@
-.form-container {
+.edit-item-form {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -14,8 +14,9 @@
   flex-direction: column;
 }
 
-.input-container label {
+.edit-item-form .input-container label {
   margin-right: 10px;
+  color: #000;
 }
 
 .input-box {
@@ -31,12 +32,12 @@
 }
 
 .submit-button {
-  width: 200px;
+  width: 50%;
   margin-top: 20px;
-  font-size: 16px;
+  font-size: 14px;
   padding: 10px;
-  background-color: #071419;
-  border: 1px solid #071419;
+  background-color: #0a514f;
+  border: 1px solid #0a514f;
   color: #fff;
-  border-radius: 50px;
+  border-radius: 10px;
 }
