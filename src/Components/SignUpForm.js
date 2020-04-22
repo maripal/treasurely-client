@@ -5,6 +5,8 @@ import { login } from '../actions/auth';
 import Input from './Input';
 import { required, nonEmpty, isTrimmed, pwMinLength, pwMaxLength, usernameMinLength, matches } from '../validators';
 
+import './SignUpForm.css';
+
 const matchesPassword = matches('password');
 
 export class SignUpForm extends React.Component {
@@ -69,6 +71,7 @@ export class SignUpForm extends React.Component {
           validate={[ required, nonEmpty, matchesPassword ]}
         />
         <button 
+          className="signup-submit-btn"
           type="submit" 
           disabled={this.props.pristine || this.props.submitting}
         >

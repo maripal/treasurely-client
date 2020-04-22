@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import SignUpForm from './SignUpForm';
 
+import './SignUpPage.css';
+
 export function SignUpPage (props) {
   console.log(props)
   if (props.loggedIn) {
@@ -10,7 +12,8 @@ export function SignUpPage (props) {
   }
 
   return (
-    <div>
+    <div className="signup-form-container">
+      <h3>Sign Up</h3>
       <SignUpForm />
     </div>
   );
