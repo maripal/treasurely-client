@@ -26,4 +26,6 @@ nav a {
 .log-out-btn {
   color: #fff;
   font-family: "Montserrat", sans-serif;
+  background: transparent;
+  border: none;
 }
