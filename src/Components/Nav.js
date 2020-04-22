@@ -1,35 +1,45 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { clearAuth } from '../actions/auth';
 import { clearAuthToken } from '../local-storage';
 import './Nav.css';
 
-class Nav extends React.Component {
+export class Nav extends React.Component {
   logOut() {
     this.props.dispatch(clearAuth());
     clearAuthToken();
   }
 
   render() {
-    let logOutBtn;
-    if (this.props.loggedIn) {
-      logOutBtn = (
-        <button onClick={() => this.logOut()}>Log Out</button>
+    // let logOutBtn;
+    let navContent;
+    if (!this.props.loggedIn) {
+      navContent = (
+        <Link to="/">Treasurely</Link>
       )
+    } else if (this.props.loggedIn && this.props.currentUser.firstName) {
+      navContent = (
+        <div className="nav-content">
+          <Link to="/home">Hello, <span className="user-name">{this.props.currentUser.firstName}</span></Link>
+          <button className="log-out-btn" onClick={() => this.logOut()}>Log Out</button>
+        </div>
+      );
     }
 
     return (
-      <div className="nav">
-        <Link to="/">Treasurely</Link>
-        {logOutBtn}
-      </div>
+      <nav className="nav-container">
+        {navContent}
+      </nav>
     );
   }
 };
 
-const mapStateToProps = state => ({
-  loggedIn: state.auth.currentUser !== null
-});
+const mapStateToProps = state => {
+  return {
+    loggedIn: state.auth.currentUser !== null,
+    currentUser: state.auth.currentUser
+  }
+}
 
 export default connect(mapStateToProps)(Nav);
