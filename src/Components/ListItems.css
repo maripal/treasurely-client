@@ -1,21 +1,28 @@
 .list-container {
   margin-bottom: 25px;
   border-bottom: 1px solid hsla(0, 0%, 50%, 0.2);
+  color: #000;
+  padding-top: 50px;
 }
 
-.item div, .purchased div {
+.item-container .item-content,
+.purchased .item-content {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
 }
 
-.item {
+.item-content {
+  font-family: "Karla", sans-serif;
+}
+
+.item-container {
   border-top: 1px solid hsla(0, 0%, 50%, 0.2);
 }
 
 .notify-buy-btn {
   border: 1px solid #68c49f;
   background-color: #68c49f;
+  color: #fff;
 }
 
 .purchased div {

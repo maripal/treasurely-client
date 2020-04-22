@@ -7,7 +7,7 @@ import EditItem from './EditItem';
 
 import './ListItems.css'
 
-class ListItems extends React.Component {
+export class ListItems extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -51,7 +51,7 @@ class ListItems extends React.Component {
     return this.props.items.map(item => {
       console.log(item)
       return (
-        <div key={item.id} className={item.purchased ? 'purchased' : 'item'}>
+        <div key={item.id} className={item.purchased ? 'purchased' : 'item-container'}>
           <Item className={this.props.total >= item.price && item.purchased === false ? 'notify-buy-btn' : ''} {...item} clickDelete={this.handleDelete} editClick={this.handleEditModal} buyClick={this.handleBuyClick} />
         </div>
       )
