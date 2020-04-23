@@ -10,9 +10,12 @@ export class AddItemButton extends React.Component {
     };
   }; 
 
+  closeModal = () => {
+    this.setState({ showModal: false })
+  }
+
   handleShowClick = () => {
     this.setState({ showModal: !false })
-  
   }
 
   handleHideClick = () => {
@@ -22,20 +25,9 @@ export class AddItemButton extends React.Component {
   render() {
     const renderModal = this.state.showModal ? (
       <Modal title="Add Item" hideModal={this.handleHideClick} >
-        <AddItemContainer />
+        <AddItemContainer closeModal={this.closeModal} />
       </Modal>
     ) : ''; 
-
-    // let buttonStyle = {
-    //   backgroundColor: '#071419',
-    //   border: '1px solid #071419',
-    //   borderRadius: '50px',
-    //   color: 'white',
-    //   padding: '15px 25px',
-    //   width: '100%',
-    //   marginTop: '50px',
-    //   marginBottom: '30px'
-    // };
 
     return (
       <div className="add-item-btn-container">

@@ -8,7 +8,7 @@ export class AddItemContainer extends React.Component {
 
   onSubmit = (formValues, dispatch) => {
     console.log(formValues);
-    this.props.addItem(formValues);
+    this.props.addItem(formValues).then(() => this.props.closeModal());
     dispatch(reset('addItemForm'))
   }
 
