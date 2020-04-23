@@ -60,8 +60,8 @@ export class ListItems extends React.Component {
 
   render() {
     const renderEditModal = this.state.showModal ? (
-      <Modal title="Edit Item Modal" hideModal={this.handleCloseModal}>
-        <EditItem id={this.state.editItemId} />
+      <Modal title="Edit Item" hideModal={this.handleCloseModal}>
+        <EditItem id={this.state.editItemId} closeModal={this.handleCloseModal} />
       </Modal>
     ) : '';
 

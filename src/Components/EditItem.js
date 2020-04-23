@@ -9,7 +9,7 @@ export class EditItem extends React.Component {
   onSubmit = (formValues, dispatch) => {
     console.log(formValues);
     console.log(this.props.id, formValues)
-    this.props.updateItem(this.props.id, formValues);
+    this.props.updateItem(this.props.id, formValues).then(() => this.props.closeModal());
     dispatch(reset('editItem'));
   }
 
