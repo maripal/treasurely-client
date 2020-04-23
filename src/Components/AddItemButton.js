@@ -10,28 +10,28 @@ export class AddItemButton extends React.Component {
     };
   }; 
 
-  closeModal = () => {
-    this.setState({ showModal: false })
-  }
+  // closeModal = () => {
+  //   this.setState({ showModal: false })
+  // }
 
-  handleShowClick = () => {
+  handleShowModal = () => {
     this.setState({ showModal: !false })
   }
 
-  handleHideClick = () => {
+  handleHideModal = () => {
     this.setState({ showModal: false })
   };
 
   render() {
     const renderModal = this.state.showModal ? (
-      <Modal title="Add Item" hideModal={this.handleHideClick} >
-        <AddItemContainer closeModal={this.closeModal} />
+      <Modal title="Add Item" hideModal={this.handleHideModal} >
+        <AddItemContainer closeModal={this.handleHideModal} />
       </Modal>
     ) : ''; 
 
     return (
       <div className="add-item-btn-container">
-        <button className="add-item-btn" onClick={this.handleShowClick}>Add Item</button>
+        <button className="add-item-btn" onClick={this.handleShowModal}>Add Item</button>
         {renderModal}
       </div>
     );
