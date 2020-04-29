@@ -14,30 +14,20 @@
 
 .total {
   text-align: center;
-  font-size: 3em;
+  font-size: 60px;
   margin-bottom: 20px;
-  margin-top: 65px;
+  margin-top: 20px;
   color: #fff;
   font-weight: 100;
-}
-
-.low-total {
-  color: hsla(201, 52%, 6%, 1);
-}
-
-.low-total-notification {
-  background-color: hsla(60, 100%, 64%, 0.88);
-}
-
-.empty-total-notification {
-  background-color: hsla(1, 77%, 55%, 0.95);
+  letter-spacing: 3px;
 }
 
 .list-items-section {
   background-color: #fff;
   border-radius: 35px 35px 0 0;
-  margin-bottom: 25px;
+  margin-bottom: 50px;
   padding-bottom: 30px;
+  margin-top: 50px;
 }
 
 .add-item-btn-container {
@@ -55,4 +45,5 @@
   width: 75px;
   height: 75px;
   box-shadow: 0 3px 10px 0 #000;
+  font-family: "Karla", sans-serif;
 }
