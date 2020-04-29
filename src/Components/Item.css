@@ -26,20 +26,23 @@
   border: none;
   padding: 10px 5px;
   width: 33.3%;
-  font-size: 14px;
+  font-size: 16px;
   font-family: "Karla", sans-serif;
 }
 
 .buy-button {
   background-color: white;
+  border-left: 1px solid #eee;
 }
 
 .edit-button {
   background-color: white;
-  border-left: 1px solid #ccc;
-  border-right: 1px solid #ccc;
+  border-left: 1px solid #eee;
+  border-right: 1px solid #eee;
+  color: #0a514f;
 }
 
 .delete-button {
   background-color: white;
+  color: #c46868;
 }
