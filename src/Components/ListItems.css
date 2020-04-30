@@ -25,6 +25,6 @@
   color: #fff;
 }
 
-.purchased div {
+.purchased .item-details {
   background-color: lightcoral;
 }

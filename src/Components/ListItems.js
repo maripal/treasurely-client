@@ -6,6 +6,7 @@ import Modal from './Modal';
 import EditItem from './EditItem';
 
 import './ListItems.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export class ListItems extends React.Component {
   constructor(props) {
@@ -27,12 +28,12 @@ export class ListItems extends React.Component {
     if (!item.purchased) {
       const updatedTotal = this.props.total - amount;
       this.props.buyItem(id);
-      this.props.decreaseTotal({totalSavings: updatedTotal})
+      this.props.decreaseTotal({totalSavings: updatedTotal});
     } else {
       // If buy click was a mistake, this changes state back when clicked again
       const updatedTotal = this.props.total + amount;
       this.props.increaseTotal({totalSavings: updatedTotal});
-      item.purchased = false
+      item.purchased = false;
     }
   }
 
@@ -52,7 +53,14 @@ export class ListItems extends React.Component {
       console.log(item)
       return (
         <div key={item.id} className={item.purchased ? 'purchased item-container' : 'item-container'}>
-          <Item className={this.props.total >= item.price && item.purchased === false ? 'notify-buy-btn' : ''} {...item} clickDelete={this.handleDelete} editClick={this.handleEditModal} buyClick={this.handleBuyClick} />
+          <Item 
+            className={this.props.total >= item.price && item.purchased === false ? 'notify-buy-btn' : ''} 
+            {...item} 
+            clickDelete={this.handleDelete} 
+            editClick={this.handleEditModal} 
+            buyClick={this.handleBuyClick} 
+            innerText={item.purchased ? <FontAwesomeIcon icon="undo-alt" /> : 'Buy'} 
+          />
         </div>
       )
     });
