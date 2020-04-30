@@ -2,6 +2,7 @@ import React from 'react';
 import './Item.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+
 export const Item = props => {
   return (
     <div className="item-content">
@@ -11,7 +12,7 @@ export const Item = props => {
       </div>
       <div className="buttons-container">
         <button className={`item-action-button buy-button ${props.className}`} onClick={() => props.buyClick(props.price, props.id)}>
-          Buy
+          {props.innerText}
         </button>
         <button className="item-action-button edit-button" onClick={() => props.editClick(props.id)}>
           <FontAwesomeIcon icon="pencil-alt" />
