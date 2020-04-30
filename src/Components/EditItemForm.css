@@ -15,7 +15,6 @@
 }
 
 .edit-item-form .input-container label {
-  margin-right: 10px;
   color: #000;
 }
 
@@ -35,9 +34,10 @@
   width: 50%;
   margin-top: 20px;
   font-size: 14px;
-  padding: 10px;
+  padding: 12px;
   background-color: #0a514f;
   border: 1px solid #0a514f;
   color: #fff;
   border-radius: 10px;
+  font-family: "Montserrat", sans-serif;
 }

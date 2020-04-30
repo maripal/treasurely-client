@@ -15,7 +15,6 @@
 }
 
 .add-item-form .input-container label {
-  margin-right: 10px;
   color: #000;
 }
 
@@ -41,4 +40,5 @@
   border: 1px solid #0a514f;
   color: #fff;
   border-radius: 10px;
+  font-family: "Montserrat", sans-serif;
 }
