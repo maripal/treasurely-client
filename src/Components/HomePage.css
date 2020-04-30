@@ -47,3 +47,85 @@
   box-shadow: 0 3px 10px 0 #000;
   font-family: "Karla", sans-serif;
 }
+
+/* Media queries */
+
+/* Mobile Landscape */
+@media (min-width: 576px) {
+  .modal-content {
+    height: 90vh;
+  }
+
+  .submit-item-button {
+    width: 30%;
+  }
+}
+
+/* Tablet Portrait */
+@media (min-width: 768px) {
+  .modal-content {
+    width: 70%;
+    height: 65vh;
+  }
+
+  .edit-item-form .submit-button {
+    width: 35%;
+  }
+
+  .total-form label,
+  .total-form input {
+    width: 65%;
+    margin: auto;
+  }
+}
+
+/* Tablet landscape & some laptops/desktops */
+@media (min-width: 1024px) {
+  .edit-item-form .submit-button {
+    width: 30%;
+  }
+
+  .edit-item-form label,
+  .edit-item-form input,
+  .add-item-form label,
+  .add-item-form input {
+    width: 75%;
+    margin: auto;
+  }
+
+  .total-form label,
+  .total-form input {
+    width: 55%;
+  }
+
+  .nav-home-greeting {
+    font-size: 20px;
+  }
+
+  .user-name {
+    font-size: 36px;
+  }
+
+  .log-out-btn {
+    font-size: 14px;
+  }
+}
+
+/* Bigger Screens */
+@media (min-width: 1200px) {
+  .submit-item-button,
+  .edit-item-form .submit-button {
+    width: 25%;
+    margin-top: 45px;
+  }
+
+  .modal-content {
+    height: 75vh;
+    width: 60%;
+  }
+
+  .total-form label,
+  .total-form input {
+    width: 40%;
+  }
+}
