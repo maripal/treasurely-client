@@ -14,7 +14,7 @@ export default (state = initialState, action) => {
     case CLEAR_AUTH:
       return { ...state, authToken: null, currentUser: null };
     case AUTH_REQUEST:
-      return { ...state, isLoading: true, error: null };
+      return { ...state, isLoading: !false, error: null };
     case AUTH_SUCCESS:
       return { ...state, isLoading: false, currentUser: action.currentUser };
     case AUTH_ERROR:
