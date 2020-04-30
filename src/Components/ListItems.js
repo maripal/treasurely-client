@@ -51,7 +51,7 @@ export class ListItems extends React.Component {
     return this.props.items.map(item => {
       console.log(item)
       return (
-        <div key={item.id} className={item.purchased ? 'purchased' : 'item-container'}>
+        <div key={item.id} className={item.purchased ? 'purchased item-container' : 'item-container'}>
           <Item className={this.props.total >= item.price && item.purchased === false ? 'notify-buy-btn' : ''} {...item} clickDelete={this.handleDelete} editClick={this.handleEditModal} buyClick={this.handleBuyClick} />
         </div>
       )
