@@ -2,10 +2,12 @@
   width: 100%;
   border: none;
   background-color: transparent;
-  margin-top: 20px;
 }
 
-.login-form label {
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-bottom: 15px;
 }
 
 .login-btn {
@@ -18,4 +20,5 @@
   font-size: 16px;
   margin-top: 20px;
   margin-bottom: 20px;
+  font-family: "Montserrat", sans-serif;
 }
