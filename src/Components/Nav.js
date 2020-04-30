@@ -21,7 +21,7 @@ export class Nav extends React.Component {
     } else if (this.props.loggedIn && this.props.currentUser.firstName) {
       navContent = (
         <div className="nav-content">
-          <Link to="/home">Hello, <span className="user-name">{this.props.currentUser.firstName}</span></Link>
+          <Link className="nav-home-greeting" to="/home">Hello, <span className="user-name">{this.props.currentUser.firstName}</span></Link>
           <button className="log-out-btn" onClick={() => this.logOut()}>Log Out</button>
         </div>
       );
