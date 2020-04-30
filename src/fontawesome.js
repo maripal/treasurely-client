@@ -5,7 +5,8 @@ import {
   faListUl,
   faTasks,
   faPencilAlt,
-  faTrashAlt
+  faTrashAlt,
+  faUndoAlt
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
@@ -13,5 +14,6 @@ library.add(
   faListUl,
   faTasks,
   faPencilAlt,
-  faTrashAlt
+  faTrashAlt,
+  faUndoAlt
 );
