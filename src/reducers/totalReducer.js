@@ -29,7 +29,6 @@ export default (state = initialState, action) => {
     case GET_TOTAL_ERROR:
       return {...state, isLoading: false, error: action.error};
     case INCREASE_TOTAL_REQUEST: 
-      console.log(state)
       return {...state, isLoading: !false};
     case INCREASE_TOTAL_SUCCESS:
     case INCREASE_TOTAL:
