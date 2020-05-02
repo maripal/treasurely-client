@@ -24,23 +24,26 @@ export class ListItems extends React.Component {
   handleBuyClick = (amount, id) => {
     // Find item that buy was clicked to dispatch actions
     const item = this.props.items.find(item => item.id === id);
-    
-    if (!item.purchased) {
-      const updatedTotal = this.props.total - amount;
-      this.props.buyItem(id);
-      this.props.decreaseTotal({totalSavings: updatedTotal});
-    } else {
-      // If buy click was a mistake, this changes state back when clicked again
-      const updatedTotal = this.props.total + amount;
-      this.props.increaseTotal({totalSavings: updatedTotal});
-      item.purchased = false;
-    }
+
+    let { purchased } = item;
+    purchased = !purchased
+
+    this.props.buyItem(id, purchased).then(({item}) => {
+      const { purchased } = item;
+      // If purchased take item amount from total savings
+      if (purchased === true) {
+        const updatedTotal = this.props.total - amount;
+        this.props.decreaseTotal({totalSavings: updatedTotal});
+      } else if (purchased === false) {
+        // This undos buy button click and returns item amount to total savings
+        const updatedTotal = this.props.total + amount;
+        this.props.increaseTotal({totalSavings: updatedTotal});
+      }
+    })
   }
 
   handleEditModal = id => {
-    console.log(id)
     this.props.editItem(id);
-    console.log('edit button clicked' + id);
     this.setState({ showModal: !false, editItemId: id })
   }
 
@@ -83,7 +86,6 @@ export class ListItems extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state.items);
   return {
     total: state.total.total,
     items: state.items.items,
