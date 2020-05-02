@@ -53,7 +53,6 @@ export class ListItems extends React.Component {
   
   renderList = () => {
     return this.props.items.map(item => {
-      console.log(item)
       return (
         <div key={item.id} className={item.purchased ? 'purchased item-container' : 'item-container'}>
           <Item 
