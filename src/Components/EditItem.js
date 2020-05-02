@@ -7,8 +7,6 @@ import EditItemForm from './EditItemForm';
 export class EditItem extends React.Component {
 
   onSubmit = (formValues, dispatch) => {
-    console.log(formValues);
-    console.log(this.props.id, formValues)
     this.props.updateItem(this.props.id, formValues).then(() => this.props.closeModal());
     dispatch(reset('editItem'));
   }
@@ -23,8 +21,6 @@ export class EditItem extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(state);
-  console.log(ownProps)
   return {
     items: state.items.items
   }
