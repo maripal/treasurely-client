@@ -48,7 +48,6 @@ export default (state = initialState, action) => {
       return {...state, items: [...state.items, action.item], isLoading: false};
     case UPDATE_ITEM_REQUEST:
     case EDIT_ITEM:
-      // return {...state, items: state.items.map(item => item.id === action.id ? {...item, isEditing: !false} : item)};
       return {...state, isEditing: !false};
     case UPDATE_SUCCESS:
     case UPDATE_ITEM: 
@@ -57,7 +56,6 @@ export default (state = initialState, action) => {
       return {...state, isLoading: !false};
     case DELETE_ITEM_SUCCESS:
     case DELETE_ITEM:
-      //return {...state, items: state.items.filter(item => item.id !== action.item.id), isLoading: false}
       return {items: state.items.filter(item => item.id !== action.id), isLoading: false};
     case DELETE_ITEM_ERROR:
       return {...state, error: action.error}
