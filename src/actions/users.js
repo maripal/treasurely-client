@@ -29,7 +29,7 @@ export const usersError = error => {
 
 export const registerUser = user => (dispatch, getState) => {
   dispatch(usersRequest());
-  console.log(`this is user state: ${JSON.stringify(getState())}`)
+
   return fetch(`${API_BASE_URL}/users/add`, {
     method: 'POST',
     headers: {
