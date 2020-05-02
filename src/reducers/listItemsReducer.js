@@ -8,6 +8,8 @@ import {
   GET_ITEMS_ERROR,
   UPDATE_SUCCESS,
   UPDATE_ITEM_REQUEST,
+  BUY_ITEM_REQUEST,
+  BUY_ITEM_SUCCESS,
   DELETE_ITEM_REQUEST,
   DELETE_ITEM_SUCCESS,
   DELETE_ITEM_ERROR,
@@ -59,17 +61,11 @@ export default (state = initialState, action) => {
       return {items: state.items.filter(item => item.id !== action.id), isLoading: false};
     case DELETE_ITEM_ERROR:
       return {...state, error: action.error}
+    case BUY_ITEM_REQUEST:
+      return {...state, isLoading: !false, isEditing: !false}
+    case BUY_ITEM_SUCCESS:
     case BUY_ITEM:
-      return {items: state.items.map(item => {
-        if (item.id === action.id) {
-          return {
-            ...item,
-            purchased: !false
-          }
-        } else {
-          return item;
-        };
-      })};
+      return {...state, items: state.items.map(item => item.id === action.item.id ? action.item : item)}
     default:
       return state;
   }

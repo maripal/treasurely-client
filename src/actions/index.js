@@ -25,6 +25,8 @@ export const DECREASE_TOTAL_REQUEST = 'DECREASE_TOTAL_REQUEST';
 export const DECREASE_TOTAL_SUCCESS = 'DECREASE_TOTAL_SUCCESS';
 export const DECREASE_TOTAL_ERROR = 'DECREASE_TOTAL_ERROR';
 export const DECREASE_TOTAL = 'DECREASE_TOTAL';
+export const BUY_ITEM_REQUEST = 'BUY_ITEM_REQUEST';
+export const BUY_ITEM_SUCCESS = 'BUY_ITEM_SUCCESS';
 export const GET_ITEMS = 'GET_ITEMS';
 export const ADD_ITEM = 'ADD_ITEM';
 export const GET_ITEM = 'GET_ITEM';
@@ -266,7 +268,7 @@ export const updateSuccess = item => {
 
 export const updateItem = (id, values) => (dispatch, getState) => {
   const { name, price } = values;
-  dispatch(updateItemAction())
+  dispatch(updateItemAction());
   const authToken = getState().auth.authToken;
 
   return fetch(`${API_BASE_URL}/items/update/${id}`, {
@@ -281,6 +283,38 @@ export const updateItem = (id, values) => (dispatch, getState) => {
     .then(res => res.json())
     .then(item => dispatch(updateSuccess(item)))
     .catch(err => dispatch(itemError(err)))
+};
+
+export const buyItemAction = () => {
+  return {
+    type: BUY_ITEM_REQUEST
+  };
+};
+
+export const buyItemSuccess = item => {
+  return {
+    type: BUY_ITEM_SUCCESS,
+    item
+  }
+};
+
+export const buyItem = (id, purchased) => (dispatch, getState) => {
+  console.log(id, purchased)
+  dispatch(buyItemAction());
+  const authToken = getState().auth.authToken;
+
+  return fetch(`${API_BASE_URL}/items/update/${id}`, {
+    method: 'PUT',
+    headers: {
+      'content-type': 'application/json',
+      'Authorization': `Bearer ${authToken}`
+    },
+    body: JSON.stringify({id, purchased})
+  })
+  .then(res => normalizeResponseErrors(res))
+  .then(res => res.json())
+  .then(item => dispatch(buyItemSuccess(item)))
+  .catch(err => dispatch(itemError(err)))
 };
 
 export const deleteItemAction = () => {
@@ -318,9 +352,3 @@ export const deleteItem = id => (dispatch, getState) => {
     .catch(err => dispatch(deleteItemError(err)))
 };
 
-export const buyItem = id => {
-  return {
-    type: BUY_ITEM,
-    id
-  }
-};
