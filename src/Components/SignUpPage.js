@@ -6,7 +6,6 @@ import SignUpForm from './SignUpForm';
 import './SignUpPage.css';
 
 export function SignUpPage (props) {
-  console.log(props)
   if (props.loggedIn) {
     return <Redirect to="/home" />
   }
