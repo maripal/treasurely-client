@@ -10,10 +10,6 @@ export class AddItemButton extends React.Component {
     };
   }; 
 
-  // closeModal = () => {
-  //   this.setState({ showModal: false })
-  // }
-
   handleShowModal = () => {
     this.setState({ showModal: !false })
   }
