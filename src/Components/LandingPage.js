@@ -13,11 +13,12 @@ export function LandingPage(props) {
   }
   
   return (
-      <header className="header-container">
+      <header className="grid header-container">
         <div className="header-content">
           <h1 className="main-heading">Treasurely</h1>
           <h2 className="sub-heading">
             <span className="sub-heading-first">Track your savings</span>
+            <br />
             <span className="sub-heading-second"> &amp; create a wishlist.</span>
           </h2>
           <img className="landing-image" src="./images/Treasure_Chest_Illustration.png" alt="A treasure chest illustration" />
@@ -29,12 +30,12 @@ export function LandingPage(props) {
           <LoginForm />
         </div>
 
-        <section className="card-container">
+        <section className="grid card-container">
           <div className="card">
             <FontAwesomeIcon className="card-icon" icon="dollar-sign" />
             <div className="card-content">
               <h5 className="card-title">Track your savings</h5>
-              <p>Track your savings.</p>
+              <p>Save up your money for something you really want/need. Once you've saved enough for an item/s, you'll be notified.</p>
             </div>
           </div>
           <div className="card">
@@ -48,9 +49,8 @@ export function LandingPage(props) {
             <FontAwesomeIcon className="card-icon" icon="tasks" />
             <div className="card-content">
               <h5 className="card-title">Buy item</h5>
-              <p>When you have enough in your savings to buy a certain item, 
-                it'll notify you by changing the 'buy' button color for that item. 
-                If you decide to buy it, you can just check it off your list.
+              <p>
+                When you've saved enough for an item, you can check it off your list if you're going to buy it.
               </p>
             </div>
           </div>
