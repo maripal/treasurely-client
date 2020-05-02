@@ -299,7 +299,7 @@ export const buyItemSuccess = item => {
 };
 
 export const buyItem = (id, purchased) => (dispatch, getState) => {
-  console.log(id, purchased)
+
   dispatch(buyItemAction());
   const authToken = getState().auth.authToken;
 
@@ -339,7 +339,6 @@ export const deleteItemError = error => {
 
 export const deleteItem = id => (dispatch, getState) => {
   dispatch(deleteItemAction())
-  console.log(`delete item: ${id}`)
   const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/items/${id}`, {
     method: 'DELETE',
