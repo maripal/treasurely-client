@@ -4,10 +4,6 @@ import ReactDOM from 'react-dom';
 import './Modal.css';
 
 const Modal = props => {
-  console.log(props);
-  //FIX FORM STYLING!
-
-  //props is coming from our 'addItemForm' component.
    return ReactDOM.createPortal(
     <div className="modal-container">
       <div className="modal-content">
