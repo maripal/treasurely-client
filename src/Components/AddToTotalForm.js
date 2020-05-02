@@ -44,22 +44,7 @@ class AddToTotalForm extends React.Component {
     const { handleSubmit } = this.props;
 
     return (
-      //  <div>
-      //   <form className="total-form">
-      //     <input 
-      //       name="total"
-      //       type="text"
-      //       pattern="\d+(\.\d{0,2})?"
-      //       onChange={this.onChange}
-      //       placeholder="Add amount"
-      //       value={this.state.amountInput}
-      //       className="total-input"
-      //       required
-      //     />
-      //     <button className="add-button" type="submit" onClick={this.addMoneySubmit}>+</button>
-      //     <button className="minus-button" type="submit" onClick={this.subtractMoneySubmit}>-</button>
-      //   </form>
-      // </div> 
+ 
       <fieldset className="total-form-container">
         <form
         onSubmit={handleSubmit}
