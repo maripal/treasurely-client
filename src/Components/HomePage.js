@@ -32,7 +32,6 @@ export class HomePage extends React.Component {
 };
 
 const mapStateToProps = state => {
-  console.log(state)
   return {
     total: state.total.total,
     isLoggedIn: state.auth.authToken && state.auth.currentUser
