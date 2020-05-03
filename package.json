@@ -32,6 +32,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "dotenv": "^8.2.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "minimist": "^1.2.5"
