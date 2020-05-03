@@ -1,4 +1,8 @@
-import { USERS_REQUEST, USERS_SUCCESS, USERS_ERROR } from '../actions/users';
+import { 
+  USERS_REQUEST, 
+  USERS_SUCCESS, 
+  USERS_ERROR 
+} from '../actions/users';
 
 const initialState = {
   user: '',
