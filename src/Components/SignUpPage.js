@@ -12,7 +12,7 @@ export function SignUpPage (props) {
 
   return (
     <div className="signup-form-container">
-      <h3>Sign Up</h3>
+      <h1>Sign Up</h1>
       <SignUpForm />
       <p className="log-in-redirect">Already have an account? <Link to="/" className="log-in-link">Log in</Link>.</p>
     </div>

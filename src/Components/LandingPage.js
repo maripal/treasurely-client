@@ -13,7 +13,7 @@ export function LandingPage(props) {
   }
   
   return (
-      <header className="grid header-container">
+      <header className="grid header-container" role="banner">
         <div className="header-content">
           <h1 className="main-heading">Treasurely</h1>
           <h2 className="sub-heading">
@@ -32,23 +32,23 @@ export function LandingPage(props) {
 
         <section className="grid card-container">
           <div className="card">
-            <FontAwesomeIcon className="card-icon" icon="dollar-sign" />
+            <FontAwesomeIcon className="card-icon" icon="dollar-sign" role="img" />
             <div className="card-content">
-              <h5 className="card-title">Track your savings</h5>
+              <h4 className="card-title">Track your savings</h4>
               <p>Save up your money for something you really want/need. Once you've saved enough for an item/s, you'll be notified.</p>
             </div>
           </div>
           <div className="card">
-            <FontAwesomeIcon className="card-icon" icon="list-ul" />
+            <FontAwesomeIcon className="card-icon" icon="list-ul" role="img" />
             <div className="card-content">
-              <h5 className="card-title">Add an item to your list</h5>
+              <h4 className="card-title">Add an item to your list</h4>
               <p>You can add anything that you wish to buy. It's your own wishlist.</p>
             </div>
           </div>
           <div className="card">
-            <FontAwesomeIcon className="card-icon" icon="tasks" />
+            <FontAwesomeIcon className="card-icon" icon="tasks" role="img" />
             <div className="card-content">
-              <h5 className="card-title">Buy item</h5>
+              <h4 className="card-title">Buy item</h4>
               <p>
                 When you've saved enough for an item, you can check it off your list if you're going to buy it.
               </p>

@@ -46,6 +46,7 @@ class AddToTotalForm extends React.Component {
     return (
  
       <fieldset className="total-form-container">
+        <legend>Track your savings</legend>
         <form
         onSubmit={handleSubmit}
         className="total-form"
@@ -63,6 +64,7 @@ class AddToTotalForm extends React.Component {
           <button 
             className="add-button" 
             type="submit"
+            aria-label="Add money"
             disabled={this.props.pristine || this.props.submitting}
             onClick={handleSubmit(value => this.increaseTotal({ ...value }))}
           >
@@ -71,6 +73,7 @@ class AddToTotalForm extends React.Component {
           <button
             className="minus-button"
             type="submit"
+            aria-label="Subtract money"
             disabled={this.props.pristine || this.props.submitting}
             onClick={handleSubmit(value => this.decreaseTotal({ ...value }))}
           >
