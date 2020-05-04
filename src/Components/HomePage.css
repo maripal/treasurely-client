@@ -109,6 +109,10 @@
   .log-out-btn {
     font-size: 14px;
   }
+
+  .error-text {
+    margin: 5px 0 0 88px;
+  }
 }
 
 /* Bigger Screens */
@@ -127,5 +131,9 @@
   .total-form label,
   .total-form input {
     width: 40%;
+  }
+
+  .error-text {
+    margin: 5px 0 0 100px;
   }
 }

@@ -2,6 +2,10 @@
   border: none;
 }
 
+legend {
+  display: none;
+}
+
 .total-form {
   display: flex;
   flex-direction: row;
@@ -21,8 +25,8 @@
 
 .add-button {
   background-color: #fff;
-  border: 1px solid #68c49f;
-  color: #68c49f;
+  border: 1px solid #0a514f;
+  color: #0a514f;
   margin-right: 20px;
 }
 
