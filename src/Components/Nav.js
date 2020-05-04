@@ -28,7 +28,7 @@ export class Nav extends React.Component {
     }
 
     return (
-      <nav className="nav-container">
+      <nav className="nav-container" role="navigation">
         {navContent}
       </nav>
     );
